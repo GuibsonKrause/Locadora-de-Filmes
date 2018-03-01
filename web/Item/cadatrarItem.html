@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <title>Cadastrar Item</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container pull-left">
+            <div class="row">
+                <form class="form-horizontal">
+                    <fieldset>
+
+                        <br></br>
+                        <!-- Form Name -->
+                        <h2 style="text-align: center;">Cadastrar Item</h2>
+                        <br></br>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="numero">Número</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+
+                                    <input id="numero" name="numero" class="form-control" placeholder="Número" type="number" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="Titulo">Título</label>  
+                            <div class="col-md-4">
+                                <input id="Nome" name="Titulo" type="text" placeholder="Título" class="form-control input-md" required="">
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="data">Data</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                    <input id="data" name="data" class="form-control" placeholder="Data" type="date" required="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="tipo">Tipo</label>
+                            <div class="col-md-4">
+                                <select class="form-control" name="tipo">
+                                    <option value="">Selecione um Tipo</option>
+                                    <option value="DVD">DVD</option>
+                                    <option value="BlueRay">BlueRay</option>
+                                    <option value="Fita">Fita</option>
+                                </select>
+                            </div>
+                        </div>
+                        </div>
+                        <!-- Button (Double) -->
+                        <div class="form-group">
+                            <label class="col-md-5 control-label" for=""></label>
+                            <div class="col-md-5">
+                                <button id="" name="" class="btn btn-primary">Salvar</button>
+                                <button id="" name="" class="btn btn-warning">Cancelar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
