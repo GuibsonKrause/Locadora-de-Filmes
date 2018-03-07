@@ -10,7 +10,7 @@ and open the template in the editor.
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Diretor</title>
+        <title>Alterar/Excluir Diretor</title>
 
         <!-- Bootstrap -->
         <link href="../css/bootstrap.css" rel="stylesheet">
@@ -22,10 +22,11 @@ and open the template in the editor.
         <link href="../css/style.css" rel="stylesheet">
         <link href="../css/dropdown.css" rel="stylesheet" type="text/css"/>
 
+   
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- Add icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             /*Formatação do botão da tabela*/
             .btnTable {
@@ -40,77 +41,91 @@ and open the template in the editor.
             /* Darker background on mouse-over */
             .btnTable:hover {
                 background-color: #ED502E;
-
             }
         </style>
+            <header>
+                <nav div class="navbar navbar-default navbar-static-top" role="navigation">
+                    <div class="container">
 
-    </head>
-    <body>
-        
-         
- 
- 
-        <header>
-            <nav div class="navbar navbar-default navbar-static-top" role="navigation">
-                <div class="container">
-
-                    <ul class="info">
-                        <li><p><i class="fa fa-phone"></i>00000000</p></li>
-                        <li><a href="#"><i class="fa fa-envelope"></i>locadora@Loc.com</a></li>
-                    </ul>
-                </div>
-            </nav>
-
-            <nav class="navbar navbar-default navbar-static-top" role="navigation">
-                <div class="navigation">
-                    <div class="container">					
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <div class="navbar-brand">
-                                <a href="../index.htm"><h1><span>L</span>ocadora</h1></a>
-                            </div>
-                        </div>
-
-                        <div class="navbar-collapse collapse">							
-                            <div class="menu">
-                                <ul class="nav nav-tabs" role="tablist">
-
-                                    <li class="dropdown" ><a class="nav-link dropdown-toggle" href="http://localhost:8080/locadora-web/Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Controle de Locações</a>
-
-                                        <div class="dropdown-content">
-                                            <a href="http://localhost:8080/locadora-web/Locaçao/">Efetuar Locação</a>
-                                            <a href="http://localhost:8080/locadora-web/Locaçao/">Efetuar Devolução</a>
-
-                                        </div>
-
-                                    </li>
-                                    <li class="dropdown" ><a class="nav-link dropdown-toggle" href="http://localhost:8080/locadora-web/Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Cadastrar</a>
-
-                                        <div class="dropdown-content">
-                                            <a href="../Ator/cadastrarAtor.html">Cadastrar Ator</a>
-                                            <a href="../Classe/cadastrarClasse.html">Cadastrar Classe</a>
-                                            <a href="../Item/cadastrarItem.html">Cadastrar Item</a>
-                                            <a href="../Titulo/cadastrarTitulo.html">Cadastrar Título</a>
-                                            <a href="../Cliente/cadastrarCliente.html">Cadastrar Cliente</a>
-                                            <a href="../Diretor/cadastrarDiretor.html">Cadastrar Diretor</a>
-                                        </div>
-     
-                                    </li>
-                                    <ul class="nav navbar-nav pull-right">
-                                        <li class=""><a href="http://localhost:8080/locadora-web/Admin/login.html"><span class="glyphicon glyphicon-off"></span>Sair</a></li>
-                                    </ul>
-                                </ul>
-                            </div>
-                        </div>						
+                        <ul class="info">
+                            <li><p><i class="fa fa-phone"></i>00000000</p></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i>locadora@Loc.com</a></li>
+                        </ul>
                     </div>
-                </div>	
-            </nav>		
-        </header>
+                </nav>
+
+                <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                    <div class="navigation">
+                        <div class="container">					
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <div class="navbar-brand">
+                                    <a href="../Admin/Admin.html"><h1><span>L</span>ocadora</h1></a>
+                                </div>
+                            </div>
+
+                            <div class="navbar-collapse collapse">							
+                                <div class="menu">
+                                    <ul class="nav nav-tabs" role="tablist">
+
+                                        <li class="dropdown" ><a class="nav-link dropdown-toggle" href="http://localhost:8080/locadora-web/Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Controle de Locações</a>
+
+                                                     <div class="dropdown-content">
+                                                <a href="../Locacao/Nova_Locação.html">Efetuar Locação</a>
+                                                <a href="../Devolucao/Devolução.html">Efetuar Devolução</a>
+                                            </div>
+
+                                        </li>
+                                        <li class="dropdown" ><a class="nav-link dropdown-toggle" href="http://localhost:8080/locadora-web/Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Cadastrar</a>
+
+                                            <div class="dropdown-content">
+                                                <a href="../Ator/cadastrarAtor.html">Cadastrar Ator</a>
+                                                <a href="../Classe/cadastrarClasse.html">Cadastrar Classe</a>
+                                                <a href="../Item/cadastrarItem.html">Cadastrar Item</a>
+                                                <a href="../Titulo/cadastrarTitulo.html">Cadastrar Título</a>
+                                                <a href="../Diretor/CadastrarDiretor.html">Cadastrar Diretor</a>
+                                            </div>
+
+                                        </li>
+                                        <li class="dropdown" ><a class="nav-link dropdown-toggle" href="http://localhost:8080/locadora-web/Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Modificar</a>
+
+                                            <div class="dropdown-content">
+                                                <a href="../Ator/Alterar_Ator.html">Ator</a>
+                                                <a href="../Classe/Alterar_Classel.html">Classe</a>
+                                                <a href="../Item/Alterar_Item.html">Item</a>
+                                                <a href="../Titulo/Alterar_Titulo.html">Título</a>
+                                                <a href="../Locacao/AlterarLocaçao.html">Locação</a>
+                                                <a href="../Diretor/Alterar_Diretor.html">Diretor</a>
+                                            </div>
+
+                                        </li>
+                                        <li class="dropdown" ><a class="nav-link dropdown-toggle" href="http://localhost:8080/locadora-web/Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Cliente</a>
+
+                                            <div class="dropdown-content">
+                                                <a href="../Cliente/cadastrarCliente.html">Cadastrar Cliente</a>
+                                                <a href="../Cliente/ExcluirCliente.html">Alterar/Excluir Cliente</a>
+                                                <a href="../Cliente/AtivarCliente.html">Ativar Cliente</a>
+                                                <a href="../Cliente/DesativarCliente.html">Desativar Cliente</a>
+                                                <a href="../Cliente/cadastrarDependentes.html">Cadastrar Dependentes</a>
+                                            </div>
+
+                                        </li>
+                                        <ul class="nav navbar-nav pull-right">
+                                            <li class=""><a href="http://localhost:8080/locadora-web/Admin/login.html"><span class="glyphicon glyphicon-off"></span>Sair</a></li>
+                                        </ul>
+                                    </ul>
+                                </div>
+                            </div>						
+                        </div>
+                    </div>	
+                </nav>		
+            </header>
+             
 
         <div class="container-fluid">
             <div class="row">
@@ -119,7 +134,7 @@ and open the template in the editor.
 
                         <br></br>
                         <!-- Form Name -->
-                        <h2 style="text-align: center;">Alterar Diretor</h2>
+                        <h2 style="text-align: center;">Alterar/Excluir Diretor</h2>
                         <br></br>
 
 
@@ -140,20 +155,20 @@ and open the template in the editor.
                                         <tr>
                                             <td>1</td>
                                             <td>Diretor</td>
-                                            <td><a href="#"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                                            <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+                                             <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
+                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
                                             <td>Diretor</td>
-                                            <td><a href="#"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                                            <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+                                              <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
+                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
                                             <td>Diretor</td>
-                                            <td><a href="#"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                                            <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+                                            <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
+                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -166,7 +181,7 @@ and open the template in the editor.
             <br></br>
         </div>
 
-        <footer>
+      <footer>
             <div class="inner-footer">
                 <div class="container">
                     <div class="row">
@@ -176,13 +191,8 @@ and open the template in the editor.
 
                         </div>
                         <div class="col-md-4 l-posts">
-                            <h3 class="widgetheading">Latest Posts</h3>
-                            <ul>
-                                <li><a href="#">This is awesome post title</a></li>
-                                <li><a href="#">Awesome features are awesome</a></li>
-                                <li><a href="#">Create your own awesome website</a></li>
-                                <li><a href="#">Wow, this is fourth post title</a></li>
-                            </ul>
+                            <h3 class="widgetheading"></h3>
+
                         </div>
                         <div class="col-md-4 f-contact">
                             <h3 class="widgetheading">Contatos</h3>
@@ -202,20 +212,7 @@ and open the template in the editor.
                         <div class="copyright">
                             © 2018 Locadora| <a href="http://bootstraptaste.com">Bootstraptaste</a>
                         </div>
-                        <!-- 
-                            All links in the footer should remain intact. 
-                            Licenseing information is available at: http://bootstraptaste.com/license/
-                            You can buy this theme without footer links online at: http://bootstraptaste.com/buy/?theme=Dewi
-                        -->
-                        <nav class="foot-nav">
-                            <ul>
-                                <li><a href="#">Inicio</a></li>
-                                <li><a href="#">Categorias</a></li>
-                                <li><a href="#">Contato</a></li>
-                                <!--<<li><a href="#">Portfolio</a></li>-->
-                                <!--<<li><a href="#">Contact</a></li>-->
-                            </ul>
-                        </nav>
+
                         <div class="clear"></div>
                     </div>
                 </div>
@@ -224,4 +221,23 @@ and open the template in the editor.
         </footer>
 
 
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->	
+        <script src="js/jquery-2.1.1.min.js"></script>	
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/wow.min.js"></script>
+        <script src="js/fancybox/jquery.fancybox.pack.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <script src="js/jquery.bxslider.min.js"></script>
+        <script src="js/functions.js"></script>
+        <script>
+            wow = new WOW(
+                    {
+
+                    })
+                    .init();
+        </script>
+
     </body>
+</html>
