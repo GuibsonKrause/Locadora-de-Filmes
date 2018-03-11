@@ -5818,7 +5818,8 @@ button.close {
 }
 .carousel-inner {
   position: relative;
-  width: 100%;
+  margin-top:-20px;
+    margin-left:7px;
   overflow: hidden;
 }
 .carousel-inner > .item {
