@@ -1,10 +1,12 @@
+<%-- 
+    Document   : CadastrarCliente
+    Created on : 03/04/2018, 09:37:18
+    Author     : 2016122760198
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,11 +14,10 @@ and open the template in the editor.
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <title>Cadastrar Ator</title>
+        <title>Cadastrar Cliente</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-         <!-- Bootstrap -->
+  <!-- Bootstrap -->
         <link href="../css/bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/font-awesome.min.css">
         <link rel="stylesheet" href="../css/jquery.bxslider.css">
@@ -25,10 +26,11 @@ and open the template in the editor.
         <link rel="stylesheet" href="../js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
         <link href="../css/style.css" rel="stylesheet">
         <link href="../css/dropdown.css" rel="stylesheet" type="text/css"/>
-
+        
     </head>
     <body>
-     <header>
+          
+      <header>
                 <nav div class="navbar navbar-default navbar-static-top" role="navigation">
                     <div class="container">
 
@@ -61,42 +63,42 @@ and open the template in the editor.
                                         <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Controle de Locações</a>
 
                                                      <div class="dropdown-content">
-                                                <a href="../Locacao/Nova_Locação.html">Efetuar Locação</a>
-                                                <a href="../Devolucao/Devolução.html">Efetuar Devolução</a>
+                                                <a href="../Locacao/Nova_Locação.jsp">Efetuar Locação</a>
+                                                <a href="../Devolucao/Devolução.jsp">Efetuar Devolução</a>
                                             </div>
 
                                         </li>
                                         <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Cadastrar</a>
 
                                             <div class="dropdown-content">
-                                                <a href="../Ator/cadastrarAtor.html">Cadastrar Ator</a>
-                                                <a href="../Classe/cadastrarClasse.html">Cadastrar Classe</a>
-                                                <a href="../Item/cadastrarItem.html">Cadastrar Item</a>
-                                                <a href="../Titulo/cadastrarTitulo.html">Cadastrar Título</a>
-                                                <a href="../Diretor/CadastrarDiretor.html">Cadastrar Diretor</a>
+                                                <a href="../Ator/CadastrarAtor.jsp">Cadastrar Ator</a>
+                                                <a href="../Classe/CadastrarClasse.jsp">Cadastrar Classe</a>
+                                                <a href="../Item/CadastrarItem.jsp">Cadastrar Item</a>
+                                                <a href="../Titulo/CadastrarTitulo.jsp">Cadastrar Título</a>
+                                                <a href="../Diretor/CadastrarDiretor.jsp">Cadastrar Diretor</a>
                                             </div>
 
                                         </li>
                                         <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Modificar</a>
 
                                             <div class="dropdown-content">
-                                                <a href="../Ator/Alterar_Ator.html">Ator</a>
-                                                <a href="../Classe/Alterar_Classel.html">Classe</a>
-                                                <a href="../Item/Alterar_Item.html">Item</a>
-                                                <a href="../Titulo/Alterar_Titulo.html">Título</a>
-                                                <a href="../Locacao/AlterarLocaçao.html">Locação</a>
-                                                <a href="../Diretor/Alterar_Diretor.html">Diretor</a>
+                                                <a href="../Ator/Alterar_Ator.jsp">Ator</a>
+                                                <a href="../Classe/Alterar_Classe.jsp">Classe</a>
+                                                <a href="../Item/Alterar_Item.jsp">Item</a>
+                                                <a href="../Titulo/Alterar_Titulo.jsp">Título</a>
+                                                <a href="../Locacao/AlterarLocaçao.jsp">Locação</a>
+                                                <a href="../Diretor/Alterar_Diretor.jsp">Diretor</a>
                                             </div>
 
                                         </li>
                                         <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Cliente</a>
 
                                             <div class="dropdown-content">
-                                                <a href="../Cliente/cadastrarCliente.html">Cadastrar Cliente</a>
-                                                <a href="../Cliente/AlterarCliente.html">Alterar/Excluir Cliente</a>
-                                                <a href="../Cliente/AtivarCliente.html">Ativar Cliente</a>
-                                                <a href="../Cliente/DesativarCliente.html">Desativar Cliente</a>
-                                                <a href="../Cliente/cadastrarDependentes.html">Cadastrar Dependentes</a>
+                                                <a href="../Cliente/CadastrarCliente.jsp">Cadastrar Cliente</a>
+                                                <a href="../Cliente/AlterarCliente.jsp">Alterar/Excluir Cliente</a>
+                                                <a href="../Cliente/AtivarCliente.jsp">Ativar Cliente</a>
+                                                <a href="../Cliente/DesativarCliente.jsp">Desativar Cliente</a>
+                                                <a href="../Cliente/CadastrarDependentes.jsp">Cadastrar Dependentes</a>
                                             </div>
 
                                         </li>
@@ -109,15 +111,15 @@ and open the template in the editor.
                         </div>
                     </div>	
                 </nav>		
-            </header>
-        
+            </header>        
+
         <div class="container-fluid">
             <div class="row">
                 <form class="form-horizontal">
                     <fieldset>
                         <br></br>
                         <!-- Form Name -->
-                        <h2 style="text-align: center;">Cadastrar Ator</h2>
+                        <h2 style="text-align: center;">Cadastrar Cliente</h2>
                         <br></br>
 
 
@@ -125,8 +127,63 @@ and open the template in the editor.
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="Nome">Nome</label>  
                             <div class="col-md-4">
-                                <input id="" name="" type="text" placeholder="Nome" class="form-control input-md" required="">
+                                <input id="" name="Nome" type="text" placeholder="Nome" class="form-control input-md" required="">
 
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="cpf">CPF</label>  
+                            <div class="col-md-4">
+                                <input id="cpf" name="CPF" placeholder="CPF" class="form-control input-md" required="" type="text">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="Celular">Celular</label>  
+                            <div class="col-md-4">
+                                <input id="Celular" name="Celular" placeholder="Celular" class="form-control input-md" required="" type="text">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="endereco">Endereço</label>  
+                            <div class="col-md-4">
+                                <input id="endereco" name="Endereço" placeholder="Endereço do Imóvel" class="form-control input-md" required="" type="text">
+
+                            </div>
+                        </div>
+                        
+                        
+                  
+                        <!-- Multiple Radios (inline) -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="sexo">Sexo</label>
+                            <div class="col-md-4"> 
+                                <label class="radio-inline" for="sexo-0">
+                                    <input name="sexo" id="sexo-0" value="1" checked="checked" type="radio">
+                                    Masculino
+                                </label> 
+                                <label class="radio-inline" for="sexo-1">
+                                    <input name="sexo" id="sexo-1" value="2" type="radio">
+                                    Feminino
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="data">Data De Nascimento</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                    <input id="data" name="Data de Nascimento" class="form-control" placeholder="Data" type="date" required="">
+                                </div>
                             </div>
                         </div>
 
@@ -135,13 +192,13 @@ and open the template in the editor.
                         <div class="form-group">
                             <label class="col-md-5 control-label" for=""></label>
                             <div class="col-md-5">
+
                                 <div class="ficon">
                                     <a href="#" class="btn btn-default" role="button">Cadastrar</a>
-                                    <a href="../Admin/Admin.html" class="btn btn-default" role="button">Cancelar</a>
+                                     <a href="../Admin/Admin.html" class="btn btn-default" role="button">Cancelar</a>
 
                                 </div>
-                                <br>
-                                <br>
+                                 <br></br> <br></br>
                             </div>
                         </div>
 
@@ -154,7 +211,7 @@ and open the template in the editor.
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 f-about">
-                            <a href="index.html"><h1><span>L</span>ocadora</h1></a>
+                            <a href="index.jsp"><h1><span>L</span>ocadora</h1></a>
                             <p>Melhores fimes, lançamentos você encontra</p>
 
                         </div>

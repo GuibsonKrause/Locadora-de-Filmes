@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<%-- 
+    Document   : Alterar_Classe
+    Created on : 03/04/2018, 09:32:18
+    Author     : 2016122760198
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -43,8 +44,9 @@ and open the template in the editor.
         </style>
 
     </head>
-    <body>
-             <header>
+
+   <body>
+         <header>
                 <nav div class="navbar navbar-default navbar-static-top" role="navigation">
                     <div class="container">
 
@@ -77,42 +79,42 @@ and open the template in the editor.
                                         <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Controle de Locações</a>
 
                                                      <div class="dropdown-content">
-                                                <a href="../Locacao/Nova_Locação.html">Efetuar Locação</a>
-                                                <a href="../Devolucao/Devolução.html">Efetuar Devolução</a>
+                                                <a href="../Locacao/Nova_Locação.jsp">Efetuar Locação</a>
+                                                <a href="../Devolucao/Devolução.jsp">Efetuar Devolução</a>
                                             </div>
 
                                         </li>
                                         <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Cadastrar</a>
 
                                             <div class="dropdown-content">
-                                                <a href="../Ator/cadastrarAtor.html">Cadastrar Ator</a>
-                                                <a href="../Classe/cadastrarClasse.html">Cadastrar Classe</a>
-                                                <a href="../Item/cadastrarItem.html">Cadastrar Item</a>
-                                                <a href="../Titulo/cadastrarTitulo.html">Cadastrar Título</a>
-                                                <a href="../Diretor/CadastrarDiretor.html">Cadastrar Diretor</a>
+                                                <a href="../Ator/CadastrarAtor.jsp">Cadastrar Ator</a>
+                                                <a href="../Classe/CadastrarClasse.jsp">Cadastrar Classe</a>
+                                                <a href="../Item/CadastrarItem.jsp">Cadastrar Item</a>
+                                                <a href="../Titulo/CadastrarTitulo.jsp">Cadastrar Título</a>
+                                                <a href="../Diretor/CadastrarDiretor.jsp">Cadastrar Diretor</a>
                                             </div>
 
                                         </li>
                                         <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Modificar</a>
 
                                             <div class="dropdown-content">
-                                                <a href="../Ator/Alterar_Ator.html">Ator</a>
-                                                <a href="../Classe/Alterar_Classel.html">Classe</a>
-                                                <a href="../Item/Alterar_Item.html">Item</a>
-                                                <a href="../Titulo/Alterar_Titulo.html">Título</a>
-                                                <a href="../Locacao/AlterarLocaçao.html">Locação</a>
-                                                <a href="../Diretor/Alterar_Diretor.html">Diretor</a>
+                                                <a href="../Ator/Alterar_Ator.jsp">Ator</a>
+                                                <a href="../Classe/Alterar_Classe.jsp">Classe</a>
+                                                <a href="../Item/Alterar_Item.jsp">Item</a>
+                                                <a href="../Titulo/Alterar_Titulo.jsp">Título</a>
+                                                <a href="../Locacao/AlterarLocaçao.jsp">Locação</a>
+                                                <a href="../Diretor/Alterar_Diretor.jsp">Diretor</a>
                                             </div>
 
                                         </li>
                                         <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Cliente</a>
 
                                             <div class="dropdown-content">
-                                                <a href="../Cliente/cadastrarCliente.html">Cadastrar Cliente</a>
-                                                <a href="../Cliente/AlterarCliente.html">Alterar/Excluir Cliente</a>
-                                                <a href="../Cliente/AtivarCliente.html">Ativar Cliente</a>
-                                                <a href="../Cliente/DesativarCliente.html">Desativar Cliente</a>
-                                                <a href="../Cliente/cadastrarDependentes.html">Cadastrar Dependentes</a>
+                                                <a href="../Cliente/CadastrarCliente.jsp">Cadastrar Cliente</a>
+                                                <a href="../Cliente/AlterarCliente.jsp">Alterar/Excluir Cliente</a>
+                                                <a href="../Cliente/AtivarCliente.jsp">Ativar Cliente</a>
+                                                <a href="../Cliente/DesativarCliente.jsp">Desativar Cliente</a>
+                                                <a href="../Cliente/CadastrarDependentes.jsp">Cadastrar Dependentes</a>
                                             </div>
 
                                         </li>
@@ -125,9 +127,8 @@ and open the template in the editor.
                         </div>
                     </div>	
                 </nav>		
-            </header>
-
-
+            </header>     
+   
         <div class="container-fluid">
             <div class="row">
                 <form class="form-horizontal">
@@ -135,73 +136,70 @@ and open the template in the editor.
 
                         <br></br>
                         <!-- Form Name -->
-                        <h2 style="text-align: center;">Alterar/Excluir Item</h2>
+                        <h2 style="text-align: center;">Alterar/Excluir Classe</h2>
                         <br></br>
 
-
+                 
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="Item">Item</label>
+                            <label class="col-md-4 control-label" for="Classe">Classe</label>
                             <div class="col-md-4">
                                 <table class="table table-striped">
                                     <thead>
-                                        <tr>
+                                         <tr>
                                             <th>Nº</th>
-                                            <th>Numero</th>
-                                            <th>Título</th>
+                                            <th>Nome</th>
+                                            <th>Valor</th>
                                             <th>Data</th>
-                                            <th>Tipo</th>
                                             <th>Alterar</th>
                                             <th>Excluir</th>
+                                           
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>Numero 1</td>
-                                            <td>Título 1</td>
-                                            <td>Data 1</td>
-                                            <td>Tipo 1</td>
-                                            <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
+                                            <td>Nome</td>
+                                            <td>Valor</td>
+                                            <td>Data</td>
+                                             <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
                                             <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
+                                            
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>Numero 2</td>
-                                            <td>Título 2</td>
-                                            <td>Data 2</td>
-                                            <td>Tipo 2</td>
-                                            <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
+                                            <td>Nome</td>
+                                            <td>Valor</td>
+                                            <td>Data</td>
+                                              <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
                                             <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
-                                            <td>Numero 3</td>
-                                            <td>Título 3</td>
-                                            <td>Data 3</td>
-                                            <td>Tipo 3</td>
-                                            <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
+                                            <td>Nome</td>
+                                            <td>Valor</td>
+                                            <td>Data</td>
+                                              <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
                                             <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
+                                            
                                         </tr>
+                                        
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-
-
-                     
+                        
                     </fieldset>
                 </form>
             </div>
-            <br></br>
+              <br></br>
         </div>
-
       <footer>
             <div class="inner-footer">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 f-about">
-                            <a href="index.html"><h1><span>L</span>ocadora</h1></a>
+                            <a href="index.jsp"><h1><span>L</span>ocadora</h1></a>
                             <p>Melhores fimes, lançamentos você encontra</p>
 
                         </div>

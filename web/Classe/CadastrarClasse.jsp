@@ -1,18 +1,20 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<%-- 
+    Document   : CadastrarClasse
+    Created on : 03/04/2018, 09:33:04
+    Author     : 2016122760198
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Alterar/Excluir Ator</title>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastrar Classe</title>
 
-        <!-- Bootstrap -->
+
+   <!-- Bootstrap -->
         <link href="../css/bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/font-awesome.min.css">
         <link rel="stylesheet" href="../css/jquery.bxslider.css">
@@ -21,30 +23,10 @@ and open the template in the editor.
         <link rel="stylesheet" href="../js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
         <link href="../css/style.css" rel="stylesheet">
         <link href="../css/dropdown.css" rel="stylesheet" type="text/css"/>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Add icon library -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <style>
-            /*Formatação do botão da tabela*/
-            .btnTable {
-                background-color: rgb(249,249,249);
-                border: none;
-                color: #333;
-                padding: 2px 14px;
-                font-size: 16px;
-                cursor: pointer;
-            }
-
-            /* Darker background on mouse-over */
-            .btnTable:hover {
-                background-color: #ED502E;
-            }
-        </style>
-
-    </head>
-    <body>
-             <header>
+  
+  </head>
+   <body>
+ <header>
                 <nav div class="navbar navbar-default navbar-static-top" role="navigation">
                     <div class="container">
 
@@ -77,42 +59,42 @@ and open the template in the editor.
                                         <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Controle de Locações</a>
 
                                                      <div class="dropdown-content">
-                                                <a href="../Locacao/Nova_Locação.html">Efetuar Locação</a>
-                                                <a href="../Devolucao/Devolução.html">Efetuar Devolução</a>
+                                                <a href="../Locacao/Nova_Locação.jsp">Efetuar Locação</a>
+                                                <a href="../Devolucao/Devolução.jsp">Efetuar Devolução</a>
                                             </div>
 
                                         </li>
                                         <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Cadastrar</a>
 
                                             <div class="dropdown-content">
-                                                <a href="../Ator/cadastrarAtor.html">Cadastrar Ator</a>
-                                                <a href="../Classe/cadastrarClasse.html">Cadastrar Classe</a>
-                                                <a href="../Item/cadastrarItem.html">Cadastrar Item</a>
-                                                <a href="../Titulo/cadastrarTitulo.html">Cadastrar Título</a>
-                                                <a href="../Diretor/CadastrarDiretor.html">Cadastrar Diretor</a>
+                                                <a href="../Ator/CadastrarAtor.jsp">Cadastrar Ator</a>
+                                                <a href="../Classe/CadastrarClasse.jsp">Cadastrar Classe</a>
+                                                <a href="../Item/CadastrarItem.jsp">Cadastrar Item</a>
+                                                <a href="../Titulo/CadastrarTitulo.jsp">Cadastrar Título</a>
+                                                <a href="../Diretor/CadastrarDiretor.jsp">Cadastrar Diretor</a>
                                             </div>
 
                                         </li>
                                         <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Modificar</a>
 
                                             <div class="dropdown-content">
-                                                <a href="../Ator/Alterar_Ator.html">Ator</a>
-                                                <a href="../Classe/Alterar_Classel.html">Classe</a>
-                                                <a href="../Item/Alterar_Item.html">Item</a>
-                                                <a href="../Titulo/Alterar_Titulo.html">Título</a>
-                                                <a href="../Locacao/AlterarLocaçao.html">Locação</a>
-                                                <a href="../Diretor/Alterar_Diretor.html">Diretor</a>
+                                                <a href="../Ator/Alterar_Ator.jsp">Ator</a>
+                                                <a href="../Classe/Alterar_Classe.jsp">Classe</a>
+                                                <a href="../Item/Alterar_Item.jsp">Item</a>
+                                                <a href="../Titulo/Alterar_Titulo.jsp">Título</a>
+                                                <a href="../Locacao/AlterarLocaçao.jsp">Locação</a>
+                                                <a href="../Diretor/Alterar_Diretor.jsp">Diretor</a>
                                             </div>
 
                                         </li>
                                         <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Cliente</a>
 
                                             <div class="dropdown-content">
-                                                <a href="../Cliente/cadastrarCliente.html">Cadastrar Cliente</a>
-                                                <a href="../Cliente/AlterarCliente.html">Alterar/Excluir Cliente</a>
-                                                <a href="../Cliente/AtivarCliente.html">Ativar Cliente</a>
-                                                <a href="../Cliente/DesativarCliente.html">Desativar Cliente</a>
-                                                <a href="../Cliente/cadastrarDependentes.html">Cadastrar Dependentes</a>
+                                                <a href="../Cliente/CadastrarCliente.jsp">Cadastrar Cliente</a>
+                                                <a href="../Cliente/AlterarCliente.jsp">Alterar/Excluir Cliente</a>
+                                                <a href="../Cliente/AtivarCliente.jsp">Ativar Cliente</a>
+                                                <a href="../Cliente/DesativarCliente.jsp">Desativar Cliente</a>
+                                                <a href="../Cliente/CadastrarDependentes.jsp">Cadastrar Dependentes</a>
                                             </div>
 
                                         </li>
@@ -126,8 +108,7 @@ and open the template in the editor.
                     </div>	
                 </nav>		
             </header>
-
-
+   
         <div class="container-fluid">
             <div class="row">
                 <form class="form-horizontal">
@@ -135,73 +116,62 @@ and open the template in the editor.
 
                         <br></br>
                         <!-- Form Name -->
-                        <h2 style="text-align: center;">Alterar/Excluir Item</h2>
+                        <h2 style="text-align: center;">Cadastrar Classe</h2>
                         <br></br>
 
-
-
+                        <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="Item">Item</label>
+                            <label class="col-md-4 control-label" for="nome">Nome</label>  
                             <div class="col-md-4">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Nº</th>
-                                            <th>Numero</th>
-                                            <th>Título</th>
-                                            <th>Data</th>
-                                            <th>Tipo</th>
-                                            <th>Alterar</th>
-                                            <th>Excluir</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Numero 1</td>
-                                            <td>Título 1</td>
-                                            <td>Data 1</td>
-                                            <td>Tipo 1</td>
-                                            <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Numero 2</td>
-                                            <td>Título 2</td>
-                                            <td>Data 2</td>
-                                            <td>Tipo 2</td>
-                                            <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Numero 3</td>
-                                            <td>Título 3</td>
-                                            <td>Data 3</td>
-                                            <td>Tipo 3</td>
-                                            <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <input id="" name="" type="text" placeholder="Nome" class="form-control input-md" required="">
+
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="data">Data De Devolução</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                    <input id="data" name="Data De Devolução" class="form-control" placeholder="Data" type="date" required="">
+                                </div>
+                            </div>
+                        </div>
 
-                     
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="dinheiro">Dinheiro</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">R$</span>
+                                    <input id="dinero" name="dinheiro" class="form-control" placeholder="" type="text" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Button (Double) -->
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label" for=""></label>
+                            <div class="col-md-5">
+                                <div class="ficon">
+                                    <a href="#" class="btn btn-default" role="button">Cadastrar</a>
+                                     <a href="../Admin/Admin.html" class="btn btn-default" role="button">Cancelar</a>
+
+                                </div>
+                            </div>
+                        </div>
                     </fieldset>
                 </form>
             </div>
-            <br></br>
+              <br></br>
         </div>
-
       <footer>
             <div class="inner-footer">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 f-about">
-                            <a href="index.html"><h1><span>L</span>ocadora</h1></a>
+                            <a href="index.jsp"><h1><span>L</span>ocadora</h1></a>
                             <p>Melhores fimes, lançamentos você encontra</p>
 
                         </div>

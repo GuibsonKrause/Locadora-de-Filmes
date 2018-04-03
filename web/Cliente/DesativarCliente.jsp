@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<%-- 
+    Document   : DesativarCliente
+    Created on : 03/04/2018, 09:36:03
+    Author     : 2016122760198
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Cadastrar Título</title>
+        <title>Desativar Cliente</title>
 
   <!-- Bootstrap -->
         <link href="../css/bootstrap.css" rel="stylesheet">
@@ -24,7 +25,7 @@ and open the template in the editor.
 
     </head>
     <body>
- <header>
+    <header>
                 <nav div class="navbar navbar-default navbar-static-top" role="navigation">
                     <div class="container">
 
@@ -57,42 +58,42 @@ and open the template in the editor.
                                         <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Controle de Locações</a>
 
                                                      <div class="dropdown-content">
-                                                <a href="../Locacao/Nova_Locação.html">Efetuar Locação</a>
-                                                <a href="../Devolucao/Devolução.html">Efetuar Devolução</a>
+                                                <a href="../Locacao/Nova_Locação.jsp">Efetuar Locação</a>
+                                                <a href="../Devolucao/Devolução.jsp">Efetuar Devolução</a>
                                             </div>
 
                                         </li>
                                         <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Cadastrar</a>
 
                                             <div class="dropdown-content">
-                                                <a href="../Ator/cadastrarAtor.html">Cadastrar Ator</a>
-                                                <a href="../Classe/cadastrarClasse.html">Cadastrar Classe</a>
-                                                <a href="../Item/cadastrarItem.html">Cadastrar Item</a>
-                                                <a href="../Titulo/cadastrarTitulo.html">Cadastrar Título</a>
-                                                <a href="../Diretor/CadastrarDiretor.html">Cadastrar Diretor</a>
+                                                <a href="../Ator/CadastrarAtor.jsp">Cadastrar Ator</a>
+                                                <a href="../Classe/CadastrarClasse.jsp">Cadastrar Classe</a>
+                                                <a href="../Item/CadastrarItem.jsp">Cadastrar Item</a>
+                                                <a href="../Titulo/CadastrarTitulo.jsp">Cadastrar Título</a>
+                                                <a href="../Diretor/CadastrarDiretor.jsp">Cadastrar Diretor</a>
                                             </div>
 
                                         </li>
                                         <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Modificar</a>
 
                                             <div class="dropdown-content">
-                                                <a href="../Ator/Alterar_Ator.html">Ator</a>
-                                                <a href="../Classe/Alterar_Classel.html">Classe</a>
-                                                <a href="../Item/Alterar_Item.html">Item</a>
-                                                <a href="../Titulo/Alterar_Titulo.html">Título</a>
-                                                <a href="../Locacao/AlterarLocaçao.html">Locação</a>
-                                                <a href="../Diretor/Alterar_Diretor.html">Diretor</a>
+                                                <a href="../Ator/Alterar_Ator.jsp">Ator</a>
+                                                <a href="../Classe/Alterar_Classe.jsp">Classe</a>
+                                                <a href="../Item/Alterar_Item.jsp">Item</a>
+                                                <a href="../Titulo/Alterar_Titulo.jsp">Título</a>
+                                                <a href="../Locacao/AlterarLocaçao.jsp">Locação</a>
+                                                <a href="../Diretor/Alterar_Diretor.jsp">Diretor</a>
                                             </div>
 
                                         </li>
                                         <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Cliente</a>
 
                                             <div class="dropdown-content">
-                                                <a href="../Cliente/cadastrarCliente.html">Cadastrar Cliente</a>
-                                                <a href="../Cliente/AlterarCliente.html">Alterar/Excluir Cliente</a>
-                                                <a href="../Cliente/AtivarCliente.html">Ativar Cliente</a>
-                                                <a href="../Cliente/DesativarCliente.html">Desativar Cliente</a>
-                                                <a href="../Cliente/cadastrarDependentes.html">Cadastrar Dependentes</a>
+                                                <a href="../Cliente/CadastrarCliente.jsp">Cadastrar Cliente</a>
+                                                <a href="../Cliente/AlterarCliente.jsp">Alterar/Excluir Cliente</a>
+                                                <a href="../Cliente/AtivarCliente.jsp">Ativar Cliente</a>
+                                                <a href="../Cliente/DesativarCliente.jsp">Desativar Cliente</a>
+                                                <a href="../Cliente/CadastrarDependentes.jsp">Cadastrar Dependentes</a>
                                             </div>
 
                                         </li>
@@ -105,53 +106,58 @@ and open the template in the editor.
                         </div>
                     </div>	
                 </nav>		
-            </header>             
+            </header>          
 
         <div class="container-fluid">
             <div class="row">
                 <form class="form-horizontal">
-                                     <fieldset>
+                 <fieldset>
 
                         <br></br>
                         <!-- Form Name -->
-                        <h2 style="text-align: center;">Cadastrar Título</h2>
+                        <h2 style="text-align: center;">Desativar Cliente</h2>
                         <br></br>
 
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="Nome">Nome</label>  
-                            <div class="col-md-4">
-                                <input id="Nome" name="Nome" type="text" placeholder="Nome" class="form-control input-md" required="">
-
-                            </div>
-                        </div>
+                 
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="autor">Atores</label>
+                            <label class="col-md-4 control-label" for="Cliente">Cliente</label>
                             <div class="col-md-4">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>Nº</th>
-                                            <th>Nome do Ator</th>
-                                             <th style="text-align: center">Selecione</th>
+                                            <th>Nome</th>
+                                            <th>CPF</th>
+                                            <th>Telefone</th>
+                                            <th>Endereço</th>
+                                            <th>Selecione</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody style="text-align: center">
                                         <tr>
                                             <td>1</td>
-                                            <td>Ator 1</td>
-                                            <td style="text-align: center"><input type="checkbox" name="Cliente" value="Selecione" </</tr>
+                                            <td>Nome 1</td>
+                                            <td>CPF 1</td>
+                                            <td>Telefone 1</td>
+                                            <td>Endereço 1</td>
+                                            <td><input type="radio" name="DesaCliente" value="Selecione" </</tr>
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>Ator 2</td>
-                                            <td style="text-align: center"><input type="checkbox" name="Cliente" value="Selecione" </</tr>
+                                            <td>Nome 2</td>
+                                            <td>CPF 2</td>
+                                            <td>Telefone 2</td>
+                                            <td>Endereço 2</td>
+                                              <td><input type="radio" name="DesaCliente" value="Selecione" </</tr>
                                         </tr>
                                         <tr>
                                             <td>3</td>
-                                            <td>Ator 3</td>
-                                            <td style="text-align: center"><input type="checkbox" name="Cliente" value="Selecione" </</tr>
+                                            <td>Nome 3</td>
+                                            <td>CPF 3</td>
+                                            <td>Telefone 3</td>
+                                            <td>Endereço 3</td>
+                                              <td><input type="radio" name="DesaCliente" value="Selecione" </</tr>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -159,60 +165,12 @@ and open the template in the editor.
                         </div>
                         
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="diretor">Diretor</label>
-                            <div class="col-md-4">
-                                <select class="form-control" name="diretor">
-                                    <option value="">Selecione um Diretor</option>
-                                </select>
-                            </div>
-                            <br></br>
-                        </div>
-                        
-                        
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="Ano">Ano</label>  
-                            <div class="col-md-4">
-                                <input id="Ano" name="Ano" type="number" placeholder="Ano" class="form-control input-md" required="">
-                            </div>
-                        </div>
-                        
-                        <!-- Textarea -->
-                        <div class="form-group">
-                          <label class="col-md-4 control-label" for="Sinopse">Sinopse</label>
-                          <div class="col-md-4">                     
-                            <textarea class="form-control" id="" name="Sinopse">Sinopse</textarea>
-                          </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="Classe">Classe</label>
-                            <div class="col-md-4">
-                                <select class="form-control" name="Classe">
-                                    <option value="">Selecione uma Classe</option>
-                                </select>
-                            </div>
-                            <br></br>
-                        </div>
-                        
-                        
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="Categoria">Categoria</label>
-                            <div class="col-md-4">
-                                <select class="form-control" name="Categoria">
-                                    <option value="">Selecione uma Categoria</option>
-                                </select>
-                            </div>
-                            <br></br>
-                        </div>
-                        
                         <!-- Button (Double) -->
                         <div class="form-group">
                             <label class="col-md-5 control-label" for=""></label>
                             <div class="col-md-5">
-                               <div class="ficon">
-                                    <a href="#" class="btn btn-default" role="button">Cadastrar</a>
+                                <div class="ficon">
+                                    <a href="#" class="btn btn-default" role="button">Desativar</a>
                                      <a href="../Admin/Admin.html" class="btn btn-default" role="button">Cancelar</a>
 
                                 </div>
@@ -229,7 +187,7 @@ and open the template in the editor.
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 f-about">
-                            <a href="index.html"><h1><span>L</span>ocadora</h1></a>
+                            <a href="index.jsp"><h1><span>L</span>ocadora</h1></a>
                             <p>Melhores fimes, lançamentos você encontra</p>
 
                         </div>
