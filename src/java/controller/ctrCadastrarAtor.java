@@ -7,11 +7,16 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.aplication.AplCadastrarAtor;
 
 /**
  *
@@ -28,23 +33,52 @@ public class ctrCadastrarAtor extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        String nome = request.getParameter("nome");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ctrCadastrarAtor</title>");            
-            out.println("nome  " +nome);
-            out.println("<body>");
-            out.println("<h1>Servlet ctrCadastrarAtor at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String operacao;
+        operacao = request.getParameter("operacao");
+        String nome;
+
+        
+
+        switch (operacao) {
+            case "inserir":
+
+                try {
+                    nome = request.getParameter("nome");
+                    int ret;
+                    ret = AplCadastrarAtor.inserirAtor(nome);
+                     if (ret == 0) {
+                    response.sendRedirect("erro.html");
+                }
+                    if (ret == 1) {
+                        response.sendRedirect("sucesso.html");
+                    }
+                    if (ret == 2) {
+                       response.sendRedirect("erro.html");
+                }
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(ctrCadastrarAtor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+               
+                break;
         }
+//        try (PrintWriter out = response.getWriter()) {
+//            /* TODO output your page here. You may use following sample code. */
+//            out.println("<!DOCTYPE html>");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<title>Servlet ctrCadastrarAtor</title>");
+//            out.println("nome  ");
+//            out.println("<body>");
+//            out.println("<h1>Servlet ctrCadastrarAtor at " + request.getContextPath() + "</h1>");
+//            out.println("</body>");
+//            out.println("</html>");
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -59,7 +93,11 @@ public class ctrCadastrarAtor extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ctrCadastrarAtor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -73,7 +111,11 @@ public class ctrCadastrarAtor extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ctrCadastrarAtor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

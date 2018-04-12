@@ -43,7 +43,7 @@
 
                         
                         <form id="form" action="../ctrCadastrarAtor" method="post">
-                            
+                            <input class="hidden" name="operacao" value="inserir">
                         
                             <!-- Text input-->
                             <div class="form-group">

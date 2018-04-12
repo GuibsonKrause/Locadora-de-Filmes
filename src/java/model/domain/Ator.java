@@ -6,23 +6,22 @@
 package model.domain;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 
 /**
  *
  * @author root
  */
 @Entity
+@Table(name="Ator")
 public class Ator implements Serializable {
 
     @Id
     @GeneratedValue
     private Long ID;
     
-    @Column(nullable = false)
+    
     private String nome;
 
     public Ator() {

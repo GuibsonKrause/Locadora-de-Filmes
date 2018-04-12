@@ -41,10 +41,21 @@ Contributor(s):
 -->
 <hibernate-configuration>
   <session-factory>
-    <property name="hibernate.dialect">org.hibernate.dialect.DerbyDialect</property>
-    <property name="hibernate.connection.driver_class">org.apache.derby.jdbc.ClientDriver</property>
-    <property name="hibernate.connection.url">jdbc:derby://localhost:1527/sample</property>
-    <property name="hibernate.connection.username">app</property>
-    <property name="hibernate.connection.password">app</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.hbm2ddl.auto">create</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/locadora</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
+    <mapping class="model.domain.Ator"/>
+    <mapping class="model.domain.Diretor"/>
+    <mapping class="model.domain.Classe"/>
+    <mapping class="model.domain.Cliente"/>
+    <mapping class="model.domain.Dependente"/>
+    <mapping class="model.domain.Socio"/>
+    <mapping class="model.domain.Titulo"/>
+    <mapping class="model.domain.Item"/>
+    <mapping class="model.domain.Locacao"/>
   </session-factory>
 </hibernate-configuration>
