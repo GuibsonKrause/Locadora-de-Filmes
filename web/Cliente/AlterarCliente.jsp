@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AlterarCliente
-    Created on : 03/04/2018, 09:34:27
+    Document   : CadastrarClasse
+    Created on : 03/04/2018, 09:33:04
     Author     : 2016122760198
 --%>
 
@@ -11,9 +11,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Alterar/Excluir Cliente</title>
+        <title>Cadastrar Classe</title>
 
-  <!-- Bootstrap -->
+
+        <!-- Bootstrap -->
         <link href="../css/bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/font-awesome.min.css">
         <link rel="stylesheet" href="../css/jquery.bxslider.css">
@@ -23,219 +24,68 @@
         <link href="../css/style.css" rel="stylesheet">
         <link href="../css/dropdown.css" rel="stylesheet" type="text/css"/>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Add icon library -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <style>
-            /*Formatação do botão da tabela*/
-            .btnTable {
-                background-color: rgb(249,249,249);
-                border: none;
-                color: #333;
-                padding: 2px 14px;
-                font-size: 16px;
-                cursor: pointer;
-            }
-
-            /* Darker background on mouse-over */
-            .btnTable:hover {
-                background-color: #ED502E;
-            }
-        </style>
-
     </head>
     <body>
-             <header>
-                <nav div class="navbar navbar-default navbar-static-top" role="navigation">
-                    <div class="container">
-
-                        <ul class="info">
-                            <li><p><i class="fa fa-phone"></i>00000000</p></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i>locadora@Loc.com</a></li>
-                        </ul>
-                    </div>
-                </nav>
-
-                <nav class="navbar navbar-default navbar-static-top" role="navigation">
-                    <div class="navigation">
-                        <div class="container">					
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                                <div class="navbar-brand">
-                                    <a href="../Admin/Admin.html"><h1><span>L</span>ocadora</h1></a>
-                                </div>
-                            </div>
-
-                            <div class="navbar-collapse collapse">							
-                                <div class="menu">
-                                    <ul class="nav nav-tabs" role="tablist">
-
-                                        <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Controle de Locações</a>
-
-                                                     <div class="dropdown-content">
-                                                <a href="../Locacao/Nova_Locação.jsp">Efetuar Locação</a>
-                                                <a href="../Devolucao/Devolução.jsp">Efetuar Devolução</a>
-                                            </div>
-
-                                        </li>
-                                        <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Cadastrar</a>
-
-                                            <div class="dropdown-content">
-                                                <a href="../Ator/cadastrarAtor.jsp">Cadastrar Ator</a>
-                                                <a href="../Classe/cadastrarClasse.jsp">Cadastrar Classe</a>
-                                                <a href="../Item/cadastrarItem.jsp">Cadastrar Item</a>
-                                                <a href="../Titulo/cadastrarTitulo.jsp">Cadastrar Título</a>
-                                                <a href="../Diretor/CadastrarDiretor.jsp">Cadastrar Diretor</a>
-                                            </div>
-
-                                        </li>
-                                        <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Modificar</a>
-
-                                            <div class="dropdown-content">
-                                                <a href="../Ator/Alterar_Ator.jsp">Ator</a>
-                                                <a href="../Classe/Alterar_Classe.jsp">Classe</a>
-                                                <a href="../Item/Alterar_Item.jsp">Item</a>
-                                                <a href="../Titulo/Alterar_Titulo.jsp">Título</a>
-                                                <a href="../Locacao/AlterarLocaçao.jsp">Locação</a>
-                                                <a href="../Diretor/Alterar_Diretor.jsp">Diretor</a>
-                                            </div>
-
-                                        </li>
-                                        <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Cliente</a>
-
-                                            <div class="dropdown-content">
-                                                <a href="../Cliente/CadastrarCliente.jsp">Cadastrar Cliente</a>
-                                                <a href="../Cliente/AlterarCliente.jsp">Alterar/Excluir Cliente</a>
-                                                <a href="../Cliente/AtivarCliente.jsp">Ativar Cliente</a>
-                                                <a href="../Cliente/DesativarCliente.jsp">Desativar Cliente</a>
-                                                <a href="../Cliente/CadastrarDependentes.jsp">Cadastrar Dependentes</a>
-                                            </div>
-
-                                        </li>
-                                        <ul class="nav navbar-nav pull-right">
-                                            <li class=""><a href="../Admin/login.html"><span class="glyphicon glyphicon-off"></span>Sair</a></li>
-                                        </ul>
-                                    </ul>
-                                </div>
-                            </div>						
-                        </div>
-                    </div>	
-                </nav>		
-            </header>
-             
-
+        <jsp:include page="../Cabecalho e Rodape/cabecalho.jsp"/>
 
         <div class="container-fluid">
             <div class="row">
                 <form class="form-horizontal">
-                 <fieldset>
+                    <fieldset>
 
                         <br></br>
                         <!-- Form Name -->
-                        <h2 style="text-align: center;">Alterar/Excluir Cliente</h2>
+                        <h2 style="text-align: center;">Cadastrar Classe</h2>
                         <br></br>
 
-                 
-
+                        <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="Cliente">Cliente</label>
+                            <label class="col-md-4 control-label" for="nome">Nome</label>  
                             <div class="col-md-4">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Nº</th>
-                                            <th>Nome</th>
-                                            <th>CPF</th>
-                                            <th>Telefone</th>
-                                            <th>Endereço</th>
-                                            <th>Alterar</th>
-                                            <th>Excluir</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Nome 1</td>
-                                            <td>CPF 1</td>
-                                            <td>Telefone 1</td>
-                                            <td>Endereço 1</td>
-                                              <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Nome 2</td>
-                                            <td>CPF 2</td>
-                                            <td>Telefone 2</td>
-                                            <td>Endereço 2</td>
-                                              <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Nome 3</td>
-                                            <td>CPF 3</td>
-                                            <td>Telefone 3</td>
-                                            <td>Endereço 3</td>
-                                              <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <input id="" name="" type="text" placeholder="Nome" class="form-control input-md" required="">
+
                             </div>
                         </div>
-                        
 
-                
-                        
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="data">Data De Devolução</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                    <input id="data" name="Data De Devolução" class="form-control" placeholder="Data" type="date" required="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="dinheiro">Dinheiro</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">R$</span>
+                                    <input id="dinero" name="dinheiro" class="form-control" placeholder="" type="text" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Button (Double) -->
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label" for=""></label>
+                            <div class="col-md-5">
+                                <div class="ficon">
+                                    <a href="#" class="btn btn-default" role="button">Cadastrar</a>
+                                    <a href="../Admin/Admin.html" class="btn btn-default" role="button">Cancelar</a>
+
+                                </div>
+                            </div>
+                        </div>
                     </fieldset>
                 </form>
             </div>
             <br></br>
         </div>
-      <footer>
-            <div class="inner-footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 f-about">
-                            <a href="index.jsp"><h1><span>L</span>ocadora</h1></a>
-                            <p>Melhores fimes, lançamentos você encontra</p>
-
-                        </div>
-                        <div class="col-md-4 l-posts">
-                            <h3 class="widgetheading"></h3>
-
-                        </div>
-                        <div class="col-md-4 f-contact">
-                            <h3 class="widgetheading">Contatos</h3>
-                            <a href="#"><p><i class="fa fa-envelope"></i> locadora@loc.com</p></a>
-                            <p><i class="fa fa-phone"></i>  +000 000 000</p>
-                            <p><i class="fa fa-home"></i> Locadora   |  Nº 00
-                                Colatina | Centro, Espiríto Santo <br>
-                                Brasil</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="last-div">
-                <div class="container">
-                    <div class="row">
-                        <div class="copyright">
-                            © 2018 Locadora| <a href="http://bootstraptaste.com">Bootstraptaste</a>
-                        </div>
-
-                        <div class="clear"></div>
-                    </div>
-                </div>
-
-            </div>		
-        </footer>
+        <jsp:include page="../Cabecalho e Rodape/rodape.jsp"/>
 
 
 

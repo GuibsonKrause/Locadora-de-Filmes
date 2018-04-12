@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package model.aplication;
 
 /**
  *
- * @author 2016122760198
+ * @author bianc
  */
-public class CtrTeste {
+public class AplCadastrarAtor {
     
 }

@@ -1,33 +1,33 @@
+<%-- 
+    Document   : cabecalho
+    Created on : 10/04/2018, 11:00:13
+    Author     : bianc
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-    <head>
+    <!--
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta na<me="viewport" content="width=device-width, initial-scale=1">
-        <title>Locadora</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-
-        <!-- Bootstrap -->
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap 
+        <link href="../css/bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/font-awesome.min.css">
         <link rel="stylesheet" href="../css/jquery.bxslider.css">
         <link rel="stylesheet" type="text/css" href="../css/isotope.css" media="screen" />	
         <link rel="stylesheet" href="../css/animate.css">
-        <link href="../css/dropdown.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="../js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-        <link href="../css/style.css" rel="stylesheet">	
-        <link href="../Cabecalho e Rodape/cabecalho.html"/>
-        <link href="../css/cabecalho.css" rel="stylesheet" type="text/css"/>
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
+        <link href="../css/style.css" rel="stylesheet">
+        <link href="../css/dropdown.css" rel="stylesheet" type="text/css"/>
+-->
+    
     <body>
-
         <header>
             <nav div class="navbar navbar-default navbar-static-top" role="navigation">
                 <div class="container">
@@ -58,15 +58,16 @@
                             <div class="menu">
                                 <ul class="nav nav-tabs" role="tablist">
 
-                                    <li class="dropdown" ><a class="nav-link dropdown-toggle" href="http://localhost:8080/locadora-web/Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Controle de Locações</a>
+                                    <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Controle de Locações</a>
 
                                         <div class="dropdown-content">
                                             <a href="../Locacao/Nova_Locação.jsp">Efetuar Locação</a>
-                                            <a href="../Devolucao/Devolução.jsp">Efetuar Devolução</a>
+                                            <a href="../Devolucao/Devolucao.jsp">Efetuar Devolucao</a>
                                         </div>
+                                      
 
                                     </li>
-                                    <li class="dropdown" ><a class="nav-link dropdown-toggle" href="http://localhost:8080/locadora-web/Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Cadastrar</a>
+                                    <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Cadastrar</a>
 
                                         <div class="dropdown-content">
                                             <a href="../Ator/CadastrarAtor.jsp">Cadastrar Ator</a>
@@ -77,7 +78,7 @@
                                         </div>
 
                                     </li>
-                                    <li class="dropdown" ><a class="nav-link dropdown-toggle" href="http://localhost:8080/locadora-web/Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Modificar</a>
+                                    <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Modificar</a>
 
                                         <div class="dropdown-content">
                                             <a href="../Ator/Alterar_Ator.jsp">Ator</a>
@@ -89,7 +90,7 @@
                                         </div>
 
                                     </li>
-                                    <li class="dropdown" ><a class="nav-link dropdown-toggle" href="http://localhost:8080/locadora-web/Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Cliente</a>
+                                    <li class="dropdown" ><a class="nav-link dropdown-toggle" href="../Admin/Admin.html" id="navbardrop" data-toggle="dropdown" >Cliente</a>
 
                                         <div class="dropdown-content">
                                             <a href="../Cliente/CadastrarCliente.jsp">Cadastrar Cliente</a>
@@ -101,7 +102,7 @@
 
                                     </li>
                                     <ul class="nav navbar-nav pull-right">
-                                        <li class=""><a href="http://localhost:8080/locadora-web/Admin/login.html"><span class="glyphicon glyphicon-off"></span>Sair</a></li>
+                                        <li class=""><a href="../Admin/login.html"><span class="glyphicon glyphicon-off"></span>Sair</a></li>
                                     </ul>
                                 </ul>
                             </div>
@@ -111,4 +112,3 @@
             </nav>		
         </header>
     </body>
-</html>
