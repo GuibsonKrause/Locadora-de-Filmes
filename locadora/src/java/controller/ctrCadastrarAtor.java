@@ -37,33 +37,49 @@ public class ctrCadastrarAtor extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String operacao;
-        operacao = request.getParameter("operacao");
-        String nome;
 
-        nome = request.getParameter("nome");
+        String mensagem;
+        String operacao = request.getParameter("operacao");
+        String nome = request.getParameter("nome");
 
+        int ret;
+        long id;
         switch (operacao) {
             case "inserir":
 
                 try {
-                    
-                    int ret;
+
                     ret = AplCadastrarAtor.inserirAtor(nome);
-                     if (ret == 0) {
-                    //response.sendRedirect("erro.html");
-                }
+                    if (ret == 0) {
+                        //  mensagem = "sucesso_cadastrar";
+                        //response.sendRedirect("Ator/CadastrarAtor.jsp?msg=" + mensagem);
+                    }
                     if (ret == 1) {
-                      //  response.sendRedirect("sucesso.html");
+                        //  response.sendRedirect("sucesso.html");
                     }
                     if (ret == 2) {
-                       //response.sendRedirect("erro.html");
-                }
+                        //response.sendRedirect("erro.html");
+                    }
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(ctrCadastrarAtor.class.getName()).log(Level.SEVERE, null, ex);
-                } 
+                }
 
-               
+                break;
+            case "excluir":
+
+                id = Long.parseLong(request.getParameter("id"));
+                ret = AplCadastrarAtor.excluirAtor(id);
+                if (ret == 0) {
+                    //  mensagem = "sucesso_cadastrar";
+                    //response.sendRedirect("Ator/CadastrarAtor.jsp?msg=" + mensagem);
+                }
+                if (ret == 1) {
+                    //  response.sendRedirect("sucesso.html");
+                }
+                if (ret == 2) {
+                    //response.sendRedirect("erro.html");
+                }
+
                 break;
         }
 //        try (PrintWriter out = response.getWriter()) {
@@ -120,4 +136,3 @@ public class ctrCadastrarAtor extends HttpServlet {
     }// </editor-fold>
 
 }
-

@@ -4,6 +4,14 @@
     Author     : 2016122760198
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="DAO.ConexaoHibernate"%>
+<%@page import="DAO.ConexaoHibernate"%>
+<%@page import="org.hibernate.SessionFactory"%>
+<%@page import="org.hibernate.Session"%>
+<%@page import="org.hibernate.Criteria"%>
+<%@page import="model.domain.Ator"%>
+<%@page import="model.domain.Ator"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,21 +66,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Ator 1</td>
-                                            <td style="text-align: center"><input type="checkbox" name="Cliente" value="Selecione" </</tr>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Ator 2</td>
-                                            <td style="text-align: center"><input type="checkbox" name="Cliente" value="Selecione" </</tr>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Ator 3</td>
-                                            <td style="text-align: center"><input type="checkbox" name="Cliente" value="Selecione" </</tr>
-                                        </tr>
+                                           <%
+                                                SessionFactory sf = ConexaoHibernate.getSessionFactory();
+                                                Session s = sf.openSession();
+                                                Criteria c = s.createCriteria(Ator.class);
+
+                                                List atores = c.list();
+                                                int i;
+                                                
+                                                for(i=0; i < atores.size(); i++) {
+                                                    
+                                                    out.println("<tr>");
+
+                                                    out.println("<td>" + ((Ator)atores.get(i)).getID() + "</td>");
+                                                    out.println("<td>" + ((Ator)atores.get(i)).getNome() + "</td>");
+                                                    out.println("<td>" + "style='text-align: center'><input type='checkbox' name='Cliente' value='Selecione'" +"</tr>");
+
+                                                    out.println("</tr>");
+                                                }
+                                            %>
+  
                                     </tbody>
                                 </table>
                             </div>

@@ -15,15 +15,15 @@ import javax.persistence.ManyToOne;
  *
  * @author root
  */
-@Entity
+//@Entity
 public class Dependente extends Cliente{
     
-    @Id
-    @GeneratedValue
-    private Long numInscricao;
+    //@Id
+    //@GeneratedValue
+   // private Long numInscricao;
     
     @ManyToOne
-    private Socio associado;
+    Socio associado;
 
     public Dependente() {
     }
@@ -31,7 +31,6 @@ public class Dependente extends Cliente{
     public Dependente(Socio associado, Long numInscricao, String nome, Date dtNascimento, String sexo, boolean Ativo) {
         super(numInscricao, nome, dtNascimento, sexo, Ativo);
         this.associado = associado;
-        this.numInscricao = numInscricao;
     }
 
     public Dependente(Socio associado, String nome, Date dtNascimento, String sexo, boolean Ativo) {
@@ -39,25 +38,6 @@ public class Dependente extends Cliente{
         this.associado = associado;
     }
 
-    @Override
-    public Long getNumInscricao() {
-        return numInscricao;
-    }
 
-    @Override
-    public void setNumInscricao(Long numInscricao) {
-        this.numInscricao = numInscricao;
-    }
-
-    public Socio getAssociado() {
-        return associado;
-    }
-
-    public void setAssociado(Socio associado) {
-        this.associado = associado;
-    }
-    
-
-    
 
 }

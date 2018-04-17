@@ -6,7 +6,11 @@
 package model.aplication;
 
 import DAO.ConexaoHibernate;
-import model.domain.Ator;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import model.domain.Classe;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -16,22 +20,29 @@ import org.hibernate.Transaction;
  *
  * @author bianc
  */
-public class AplCadastrarAtor {
+public class AplCadastrarClasse {
 
-    public static int inserirAtor(String nome) throws ClassNotFoundException {
+    public static int inserirClasse(String nome, Date data, Float valor) throws ClassNotFoundException, ParseException {
 
         Session session = null;
         Transaction t = null;
         if ("".equals(nome)) {
             return 0;
         }
-        Ator a = new Ator();
-        a.setNome(nome);
+       
+
+             
+        Classe c = new Classe();
+        c.setNome(nome);
+        c.setPrazoDevoulcao(data);
+        c.setValor(valor);
+        
+        
         try {
             SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
             session = sessionFac.openSession();
             t = session.beginTransaction();
-            session.save(a);
+            session.save(c);
             t.commit();
             return 1;
         } catch (HibernateException e) {
@@ -42,9 +53,9 @@ public class AplCadastrarAtor {
         }
     }
 
-    public static int excluirAtor(long id) {
-        Ator a = new Ator();
-        a.setID(id);
+    public static int excluirClasse(long id) {
+        Classe c = new Classe();
+        c.setID(id);
 
         Transaction t = null;
         Session session = null;
@@ -54,7 +65,7 @@ public class AplCadastrarAtor {
             session = sessionFac.openSession();
             t = session.beginTransaction();
             
-            session.delete(a);
+            session.delete(c);
             t.commit();
 
             return 1;
@@ -67,4 +78,6 @@ public class AplCadastrarAtor {
         }
 
     }
+
+   
 }

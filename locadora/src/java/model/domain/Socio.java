@@ -8,6 +8,7 @@ package model.domain;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,20 +19,18 @@ import javax.persistence.OneToMany;
  *
  * @author root
  */
-@Entity
+//@Entity
 public class Socio extends Cliente {
 
-     @Id
-    @GeneratedValue
-    private Long numInscricao;
+
     private String cpf;
     
     private String endereco;
     
     private String telefone;
-    @OneToMany(mappedBy = "associado", fetch = FetchType.EAGER)    
-    private List<Dependente> dependentes = new ArrayList<>();
-
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Dependente> dependentes = new ArrayList();
+    
     public Socio() {
     }
 
@@ -40,7 +39,7 @@ public class Socio extends Cliente {
         this.cpf = cpf;
         this.endereco = endereco;
         this.telefone = telefone;
-        this.numInscricao = numInscricao;
+       
     }
 
     public Socio(String cpf, String endereco, String telefone, String nome, Date dtNascimento, String sexo, boolean Ativo) {
@@ -48,16 +47,6 @@ public class Socio extends Cliente {
         this.cpf = cpf;
         this.endereco = endereco;
         this.telefone = telefone;
-    }
-
-     @Override
-    public Long getNumInscricao() {
-        return numInscricao;
-    }
-
-     @Override
-    public void setNumInscricao(Long numInscricao) {
-        this.numInscricao = numInscricao;
     }
 
     public String getCpf() {

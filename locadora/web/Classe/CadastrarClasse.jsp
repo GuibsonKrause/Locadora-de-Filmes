@@ -30,9 +30,11 @@
 
         <div class="container-fluid">
             <div class="row">
-                <form class="form-horizontal">
                     <fieldset>
 
+                        <form id="form" action="../ctrCadastrarClasse" method="POST">
+                            <input class="hidden" name="operacao" value="inserir">
+                        
                         <br></br>
                         <!-- Form Name -->
                         <h2 style="text-align: center;">Cadastrar Classe</h2>
@@ -40,31 +42,33 @@
 
                         <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="nome">Nome</label>  
+                            <label class="col-md-4 control-label" for="nome"></label>  
                             <div class="col-md-4">
-                                <input id="" name="" type="text" placeholder="Nome" class="form-control input-md" required="">
+                                <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome" required="">
 
                             </div>
-                        </div>
+                        
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="data">Data De Devolução</label>
+                            <br><br>
+                            <label class="col-md-4 control-label" for="data"></label>
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
-                                    <input id="data" name="Data De Devolução" class="form-control" placeholder="Data" type="date" required="">
+                                    <input name="data" type="date" class="form-control" id="data" placeholder="" required="">
+                                  
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="dinheiro">Dinheiro</label>
+                        
+                         
+                       <br><br>
+                            <label class="col-md-4 control-label" for="dinheiro"></label>
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <span class="input-group-addon">R$</span>
-                                    <input id="dinero" name="dinheiro" class="form-control" placeholder="" type="text" required="">
+                                    <input type="number" step="0.1" class="form-control" placeholder="Valor" name="valor">
+                                    
                                 </div>
                             </div>
                         </div>
@@ -74,14 +78,14 @@
                             <label class="col-md-5 control-label" for=""></label>
                             <div class="col-md-5">
                                 <div class="ficon">
-                                    <a href="#" class="btn btn-default" role="button">Cadastrar</a>
-                                    <a href="../Admin/Admin.html" class="btn btn-default" role="button">Cancelar</a>
+                                     <button type="submit" class="btn btn-default"  >Cadastrar</button>
+                                       <button href="../Admin/Admin.html" class="btn btn-default" >Cancelar</button>
 
                                 </div>
                             </div>
                         </div>
+                         </form>
                     </fieldset>
-                </form>
             </div>
             <br></br>
         </div>

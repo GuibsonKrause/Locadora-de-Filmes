@@ -99,7 +99,7 @@
                                             <td>Valor</td>
                                             <td>Data</td>
                                               <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
+                                            <td><button class="btnTable"><i class="fa fa-trash-o"></i></button></td>
                                             
                                         </tr>
                                         

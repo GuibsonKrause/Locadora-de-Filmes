@@ -16,7 +16,7 @@ import org.hibernate.Transaction;
  *
  * @author bianc
  */
-public class AplCadastrarAtor {
+public class AplCadastrarDiretor {
 
     public static int inserirAtor(String nome) throws ClassNotFoundException {
 

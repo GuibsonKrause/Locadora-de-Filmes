@@ -38,7 +38,7 @@ public class Locacao implements Serializable {
     private float multaCobrada;
     @ManyToOne
     private Item item;
-    @ManyToOne
+    //@ManyToOne
     private Cliente cliente;
 
     public Locacao() {

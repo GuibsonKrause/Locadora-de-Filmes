@@ -4,6 +4,15 @@
     Author     : 2016122760198
 --%>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
+<%@page import="org.hibernate.Criteria"%>
+<%@page import="model.domain.Ator"%>
+<%@page import="DAO.ConexaoHibernate"%>
+<%@page import="org.hibernate.Session"%>
+<%@page import="net.sf.ehcache.hibernate.HibernateUtil"%>
+<%@page import="org.hibernate.SessionFactory"%>
+<%@page import="org.hibernate.SessionFactory"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,13 +55,16 @@
     </head>
     <body>
 
-       <jsp:include page="../Cabecalho e Rodape/cabecalho.jsp"/>
+        <jsp:include page="../Cabecalho e Rodape/cabecalho.jsp"/>
 
 
         <div class="container-fluid">
             <div class="row">
-                <form class="form-horizontal">
-                    <fieldset>
+                <fieldset>
+
+
+                    <form id="form" action="../ctrCadastrarAtor" method="POST">
+                        <input class="hidden" name="operacao" value="excluir">
 
                         <br></br>
                         <!-- Form Name -->
@@ -72,35 +84,46 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Ator 1</td>
-                                            <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Ator 2</td>
-                                            <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Ator 3</td>
-                                            <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
+
+
+                                        <%
+                                            SessionFactory sf = ConexaoHibernate.getSessionFactory();
+                                            Session s = sf.openSession();
+                                            Criteria c = s.createCriteria(Ator.class);
+
+                                            List atores = c.list();
+                                            int i;
+
+                                            for (i = 0; i < atores.size(); i++) {
+
+                                                out.println("<tr>");
+
+                                                out.println("<td>" + ((Ator) atores.get(i)).getID() + "</td>");
+                                                out.println("<td>" + ((Ator) atores.get(i)).getNome() + "</td>");
+                                                out.println("<td>" + "<button class='btnTable'><i class='fa fa-pencil'></i></button>" + "</td>");
+                                                out.println("<td>" + "<button class='btnTable'><i class='fa fa-trash-o'></i></button>" + "</td>");
+
+                                                out.println("</tr>");
+                                            }
+                                        %>
+
+
+
+
+
+
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                    </form>
+                </fieldset>
 
-                    </fieldset>
-                </form>
             </div>
             <br></br>
         </div>
-       <jsp:include page="../Cabecalho e Rodape/rodape.jsp"/>
+        <jsp:include page="../Cabecalho e Rodape/rodape.jsp"/>
 
 
 

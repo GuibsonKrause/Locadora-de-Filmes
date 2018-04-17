@@ -10,22 +10,25 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Temporal;
 
 /**
  *
  * @author root
  */
-@Entity
+//@Entity
+@Inheritance ( strategy = InheritanceType.JOINED)
 public abstract class Cliente implements Serializable {
     
-    @Id
-    @GeneratedValue
+    //@Id
+    //@GeneratedValue
     private Long numInscricao; //ID
    
     private String nome;
    
-    @Temporal(javax.persistence.TemporalType.DATE)
+    //@Temporal(javax.persistence.TemporalType.DATE)
     private Date dtNascimento;
     
     private String sexo;

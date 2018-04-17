@@ -14,7 +14,6 @@ import javax.persistence.*;
  * @author root
  */
 @Entity
-@Table(name="Ator")
 public class Ator implements Serializable {
 
     @Id
