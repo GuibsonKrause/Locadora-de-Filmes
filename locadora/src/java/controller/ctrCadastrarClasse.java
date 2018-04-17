@@ -5,13 +5,20 @@
  */
 package controller;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.aplication.AplCadastrarClasse;
 
 /**
  *
@@ -30,19 +37,55 @@ public class ctrCadastrarClasse extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ctrCadastrarClasse</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ctrCadastrarClasse at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+
+        String mensagem;
+        String operacao = request.getParameter("operacao");
+        String nome = request.getParameter("nome");
+        float valor = Float.parseFloat(request.getParameter("valor"));
+
+       
+        
+         (request.getParameter("data"));
+       
+
+        int ret = 0;
+        long id;
+        switch (operacao) {
+            case "inserir": {
+             
+                    ret = AplCadastrarClasse.inserirClasse(nome, data, valor);
+              
+            
+            if (ret == 0) {
+                //  mensagem = "sucesso_cadastrar";
+                //response.sendRedirect("Ator/CadastrarAtor.jsp?msg=" + mensagem);
+            }
+            if (ret == 1) {
+                //  response.sendRedirect("sucesso.html");
+            }
+            if (ret == 2) {
+                //response.sendRedirect("erro.html");
+            }
+
+            break;
+            case "excluir":
+
+                id = Long.parseLong(request.getParameter("id"));
+                ret = AplCadastrarClasse.excluirClasse(id);
+                if (ret == 0) {
+                    //  mensagem = "sucesso_cadastrar";
+                    //response.sendRedirect("Ator/CadastrarAtor.jsp?msg=" + mensagem);
+                }
+                if (ret == 1) {
+                    //  response.sendRedirect("sucesso.html");
+                }
+                if (ret == 2) {
+                    //response.sendRedirect("erro.html");
+                }
+
+                break;
         }
     }
 
@@ -57,8 +100,9 @@ public class ctrCadastrarClasse extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+            throws ServletException{
+            processRequest(request, response);
+       
     }
 
     /**
@@ -71,8 +115,10 @@ public class ctrCadastrarClasse extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+            throws ServletException{
+      
+            processRequest(request, response);
+      
     }
 
     /**
