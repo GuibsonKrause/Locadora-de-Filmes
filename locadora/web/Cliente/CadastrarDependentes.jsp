@@ -4,6 +4,13 @@
     Author     : 2016122760198
 --%>
 
+<%@page import="model.domain.Socio"%>
+<%@page import="java.util.List"%>
+<%@page import="org.hibernate.Criteria"%>
+<%@page import="org.hibernate.Session"%>
+<%@page import="DAO.ConexaoHibernate"%>
+<%@page import="org.hibernate.SessionFactory"%>
+<%@page import="org.hibernate.SessionFactory"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +57,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="nome"></label>  
                             <div class="col-md-4">
-                                <input id="" name="" type="text" placeholder="Nome" class="form-control input-md" required="">
+                                <input id="" name="nomeDependente" type="text" placeholder="Nome" class="form-control input-md" required="">
 
                             </div>
 
@@ -76,7 +83,7 @@
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
-                                    <input id="data" name="Data de Nascimento" class="form-control" placeholder="Data" type="date" required="">
+                                    <input id="data" name="dataDeNascimento" class="form-control" placeholder="Data" type="date" required="">
                                 </div>
                             </div>
 
@@ -84,11 +91,22 @@
                             <br><br>
                             <label class="col-md-4 control-label" for="socio"></label>
                             <div class="col-md-4">
-                                <select class="form-control" name="socio">
-                                    <option value="">Selecione um Socio</option>
-                                    <option value="socio">Socio 1</option>
-                                    <option value="socio">Socio 2</option>
-                                    <option value="socio">Socio 3</option>
+                                <select class="form-control" name="socios">
+
+                                    <%
+                                        SessionFactory sf = ConexaoHibernate.getSessionFactory();
+                                        Session s = sf.openSession();
+                                        Criteria c;
+
+                                        c = s.createCriteria(Socio.class);
+                                        List socios = c.list();
+                                        int i;
+                                        for (i = 0; i < socios.size(); i++) {
+
+                                            out.println("<option value=''>" + ((Socio) socios.get(i)).getNome() + "</option>");
+                                        }
+                                    %>
+
                                 </select>
                             </div>
 
@@ -105,7 +123,7 @@
                                     </div>
                                 </div>
                             </div>
-                           
+
                         </div>
                     </form>
                 </fieldset>

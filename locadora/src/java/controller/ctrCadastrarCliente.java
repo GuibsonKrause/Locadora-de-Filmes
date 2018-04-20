@@ -99,14 +99,14 @@ public class ctrCadastrarCliente extends HttpServlet {
              
                 nome = request.getParameter("nomeDependente");
 
-                id = Long.parseLong(request.getParameter("idSocio"));
+                id = Long.parseLong(request.getParameter("socios"));
                
                 Socio socio = null;
                 Session session = null;
                 SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
                 session = sessionFac.openSession();
                 Criteria criteria = session.createCriteria(Titulo.class);
-                criteria.add(Restrictions.eq("idSocio", id));
+                criteria.add(Restrictions.eq("socios", id));
                 List drs = criteria.list();
                 Iterator iterator = drs.iterator();
 
