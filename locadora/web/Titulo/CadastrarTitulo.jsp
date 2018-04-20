@@ -57,12 +57,12 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="Nome"></label>  
                             <div class="col-md-4">
-                                <input id="Nome" name="Nome" type="text" placeholder="Nome" class="form-control input-md" required="">
+                                <input id="nome" name="nome" type="text" placeholder="Nome" class="form-control input-md" required="">
 
                             </div>
                             <br><br>
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="autor"></label>
+                                <label class="col-md-4 control-label" for="atores"></label>
                                 <div class="col-md-4">
                                     <table class="table table-striped">
                                         <thead>
@@ -87,19 +87,23 @@
 
                                                     out.println("<td style='text-align: center'>" + ((Ator) atores.get(i)).getID() + "</td>");
                                                     out.println("<td style='text-align: center'>" + ((Ator) atores.get(i)).getNome() + "</td>");
-                                                    out.println("<td style='text-align: center'>" + "<input type='checkbox' name='Cliente' value='Selecione'" + "</tr>");
+                                                    out.println("<td style='text-align: center'>" + "<input type='checkbox' name='atores' value='Selecione'" + "</tr>");
 
                                                     out.println("</tr>");
+                                                   
                                                 }
+                                                
                                             %>
 
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-
+<br><br>
                             <br><br>
                             <br><br>
+                            <br><br>
+                             <div class="form-group">
                             <label class="col-md-4 control-label" for="diretor"></label>
                             <div class="col-md-4">
                                 <select class="form-control" name="diretor">
@@ -108,35 +112,38 @@
                                         List diretores = c.list();
                                         for (i = 0; i < diretores.size(); i++) {
 
-                                            out.println("<option value=''>" + ((Diretor) diretores.get(i)).getNome() + "</option>");
+                                            out.println("<option value=''>" + ((Diretor) diretores.get(i)).getNome()  + "</option>");
                                         }
                                     %>
                                 </select>
                             </div>
+                             </div>
                             <br></br>
 
 
 
                             <!-- Text input-->
-
+<div class="form-group">
                             <label class="col-md-4 control-label" for="Ano"></label>  
                             <div class="col-md-4">
-                                <input id="Ano" name="Ano" type="number" placeholder="Ano" class="form-control input-md" required="">
+                                <input id="ano" name="ano" type="number" placeholder="Ano" class="form-control input-md" required="">
                             </div>
+</div>
 
 
                             <!-- Textarea -->
                             <br><br>
+                            <div class="form-group">
                             <label class="col-md-4 control-label" for="Sinopse"></label>
                             <div class="col-md-4">                     
-                                <textarea class="form-control" id="" name="Sinopse">Sinopse</textarea>
+                                <textarea class="form-control" id="sinopse" name="sinopse"  placeholder="Sinopse" rows="3" required=""></textarea>
                             </div>
-
-                            <br>
+                            </div>
+                            <br><br>
                             <br><br>
                             <label class="col-md-4 control-label" for="Classe"></label>
                             <div class="col-md-4">
-                                <select class="form-control" name="Classe">
+                                <select class="form-control" name="classe">
                                     <%
                                         c = s.createCriteria(Classe.class);
                                         List classes = c.list();
@@ -153,15 +160,15 @@
 
                             <label class="col-md-4 control-label" for="Categoria"></label>
                             <div class="col-md-4">
-                                <select class="form-control" name="Categoria">
-                                    <option value="">Ação</option>
-                                    <option value="">Drama</option>
-                                    <option value="">Comédia</option>
-                                    <option value="">Ficção Científica</option>
-                                    <option value="">Policial</option>
-                                    <option value="">Romance</option>
-                                    <option value="">Suspense</option>
-                                    <option value="">Terror</option>
+                                <select class="form-control" name="categoria">
+                                    <option value="Ação">Ação</option>
+                                    <option value="Drama">Drama</option>
+                                    <option value="Comédia">Comédia</option>
+                                    <option value="Ficção Científica">Ficção Científica</option>
+                                    <option value="Policial">Policial</option>
+                                    <option value="Romance">Romance</option>
+                                    <option value="Suspense">Suspense</option>
+                                    <option value="Terror">Terror</option>
                                 </select>
                             </div>
                             <br></br>

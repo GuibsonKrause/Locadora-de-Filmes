@@ -49,7 +49,7 @@ public class ctrCadastrarTitulo extends HttpServlet {
         String operacao = request.getParameter("operacao");
         String nome = request.getParameter("nome");
         String ators[] = request.getParameterValues("atores");
-        long idDiretor = Long.parseLong(request.getParameter("diretor"));
+        long idDiretor = Long.parseLong(request.getParameter("diretores"));
         int ano = Integer.parseInt(request.getParameter("ano"));
         String sinopse = request.getParameter("sinopse");
         String categoria = request.getParameter("categoria");
@@ -58,7 +58,6 @@ public class ctrCadastrarTitulo extends HttpServlet {
         int ret;
         long id;
         long idTitulo;
-        int resultado;
         String saida;
 
         List<Ator> atores = new ArrayList();
