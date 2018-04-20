@@ -6,6 +6,7 @@
 package model.domain;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,28 +29,26 @@ public class Classe implements Serializable {
     
     private float valor;
     
-    private Date prazoDevoulcao;
+    private Calendar prazoDevoulcao;
 
     public Classe() {
     }
 
-    public Classe(String nome, float valor, Date prazoDevoulcao) {
+    public Classe(String nome, float valor, Calendar prazoDevoulcao) {
         this.nome = nome;
         this.valor = valor;
         this.prazoDevoulcao = prazoDevoulcao;
     }
 
-    public Date getPrazoDevoulcao() {
+    
+   
+    public Calendar getPrazoDevolucao() {
         return prazoDevoulcao;
     }
 
-    public void setPrazoDevoulcao(Date prazoDevoulcao) {
-        this.prazoDevoulcao = prazoDevoulcao;
+    public void setPrazoDevolucao(Calendar PrazoDevolucao) {
+        this.prazoDevoulcao = PrazoDevolucao;
     }
-
-    
-
-
 
 
     public String getNome() {
@@ -80,5 +79,7 @@ public class Classe implements Serializable {
     public void setID(Long ID) {
         this.ID = ID;
     }
+
+   
 
 }

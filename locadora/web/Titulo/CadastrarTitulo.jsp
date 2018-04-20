@@ -1,9 +1,11 @@
 <%-- 
     Document   : CadastrarTitulo
     Created on : 03/04/2018, 09:53:35
-    Author     : 2016122760198
+    Author     : Guibson
 --%>
 
+<%@page import="model.domain.Classe"%>
+<%@page import="model.domain.Diretor"%>
 <%@page import="java.util.List"%>
 <%@page import="DAO.ConexaoHibernate"%>
 <%@page import="DAO.ConexaoHibernate"%>
@@ -21,7 +23,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Cadastrar Título</title>
 
-  <!-- Bootstrap -->
+        <!-- Bootstrap -->
         <link href="../css/bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/font-awesome.min.css">
         <link rel="stylesheet" href="../css/jquery.bxslider.css">
@@ -33,131 +35,156 @@
 
     </head>
     <body>
- <jsp:include page="../Cabecalho e Rodape/cabecalho.jsp"/> 
+        <jsp:include page="../Cabecalho e Rodape/cabecalho.jsp"/> 
 
         <div class="container-fluid">
             <div class="row">
-                <form class="form-horizontal">
-                                     <fieldset>
 
-                        <br></br>
-                        <!-- Form Name -->
-                        <h2 style="text-align: center;">Cadastrar Título</h2>
-                        <br></br>
+                <fieldset>
+
+                    <br></br>
+                    <!-- Form Name -->
+                    <h2 style="text-align: center;">Cadastrar Título</h2>
+                    <br><br>
+
+
+                    <!-- Text input-->
+                    <form id="form" action="../ctrCadastrarTitulo" method="POST">
+                        <input class="hidden" name="operacao" value="inserir">
+
 
                         <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="Nome">Nome</label>  
+                            <label class="col-md-4 control-label" for="Nome"></label>  
                             <div class="col-md-4">
                                 <input id="Nome" name="Nome" type="text" placeholder="Nome" class="form-control input-md" required="">
 
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="autor">Atores</label>
-                            <div class="col-md-4">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Nº</th>
-                                            <th>Nome do Ator</th>
-                                             <th style="text-align: center">Selecione</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                           <%
+                            <br><br>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="autor"></label>
+                                <div class="col-md-4">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align: center">Nº</th>
+                                                <th style="text-align: center">Nome do Ator</th>
+                                                <th style="text-align: center">Selecione</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%
                                                 SessionFactory sf = ConexaoHibernate.getSessionFactory();
                                                 Session s = sf.openSession();
                                                 Criteria c = s.createCriteria(Ator.class);
 
                                                 List atores = c.list();
                                                 int i;
-                                                
-                                                for(i=0; i < atores.size(); i++) {
-                                                    
+
+                                                for (i = 0; i < atores.size(); i++) {
+
                                                     out.println("<tr>");
 
-                                                    out.println("<td>" + ((Ator)atores.get(i)).getID() + "</td>");
-                                                    out.println("<td>" + ((Ator)atores.get(i)).getNome() + "</td>");
-                                                    out.println("<td>" + "style='text-align: center'><input type='checkbox' name='Cliente' value='Selecione'" +"</tr>");
+                                                    out.println("<td style='text-align: center'>" + ((Ator) atores.get(i)).getID() + "</td>");
+                                                    out.println("<td style='text-align: center'>" + ((Ator) atores.get(i)).getNome() + "</td>");
+                                                    out.println("<td style='text-align: center'>" + "<input type='checkbox' name='Cliente' value='Selecione'" + "</tr>");
 
                                                     out.println("</tr>");
                                                 }
                                             %>
-  
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="diretor">Diretor</label>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <br><br>
+                            <br><br>
+                            <label class="col-md-4 control-label" for="diretor"></label>
                             <div class="col-md-4">
                                 <select class="form-control" name="diretor">
-                                    <option value="">Selecione um Diretor</option>
+                                    <%
+                                        c = s.createCriteria(Diretor.class);
+                                        List diretores = c.list();
+                                        for (i = 0; i < diretores.size(); i++) {
+
+                                            out.println("<option value=''>" + ((Diretor) diretores.get(i)).getNome() + "</option>");
+                                        }
+                                    %>
                                 </select>
                             </div>
                             <br></br>
-                        </div>
-                        
-                        
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="Ano">Ano</label>  
+
+
+
+                            <!-- Text input-->
+
+                            <label class="col-md-4 control-label" for="Ano"></label>  
                             <div class="col-md-4">
                                 <input id="Ano" name="Ano" type="number" placeholder="Ano" class="form-control input-md" required="">
                             </div>
-                        </div>
-                        
-                        <!-- Textarea -->
-                        <div class="form-group">
-                          <label class="col-md-4 control-label" for="Sinopse">Sinopse</label>
-                          <div class="col-md-4">                     
-                            <textarea class="form-control" id="" name="Sinopse">Sinopse</textarea>
-                          </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="Classe">Classe</label>
+
+
+                            <!-- Textarea -->
+                            <br><br>
+                            <label class="col-md-4 control-label" for="Sinopse"></label>
+                            <div class="col-md-4">                     
+                                <textarea class="form-control" id="" name="Sinopse">Sinopse</textarea>
+                            </div>
+
+                            <br>
+                            <br><br>
+                            <label class="col-md-4 control-label" for="Classe"></label>
                             <div class="col-md-4">
                                 <select class="form-control" name="Classe">
-                                    <option value="">Selecione uma Classe</option>
+                                    <%
+                                        c = s.createCriteria(Classe.class);
+                                        List classes = c.list();
+                                        for (i = 0; i < classes.size(); i++) {
+
+                                            out.println("<option value=''>" + ((Classe) classes.get(i)).getNome() + "</option>");
+                                        }
+                                    %>
                                 </select>
                             </div>
                             <br></br>
-                        </div>
-                        
-                        
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="Categoria">Categoria</label>
+
+
+
+                            <label class="col-md-4 control-label" for="Categoria"></label>
                             <div class="col-md-4">
                                 <select class="form-control" name="Categoria">
-                                    <option value="">Selecione uma Categoria</option>
+                                    <option value="">Ação</option>
+                                    <option value="">Drama</option>
+                                    <option value="">Comédia</option>
+                                    <option value="">Ficção Científica</option>
+                                    <option value="">Policial</option>
+                                    <option value="">Romance</option>
+                                    <option value="">Suspense</option>
+                                    <option value="">Terror</option>
                                 </select>
                             </div>
                             <br></br>
-                        </div>
-                        
-                        <!-- Button (Double) -->
-                        <div class="form-group">
-                            <label class="col-md-5 control-label" for=""></label>
-                            <div class="col-md-5">
-                               <div class="ficon">
-                                    <a href="#" class="btn btn-default" role="button">Cadastrar</a>
-                                     <a href="../Admin/Admin.html" class="btn btn-default" role="button">Cancelar</a>
 
+
+                            <!-- Button (Double) -->
+                            <div class="form-group">
+                                <label class="col-md-5 control-label" for=""></label>
+                                <div class="col-md-5">
+                                    <div class="ficon">
+                                        <button type="submit" class="btn btn-default"  >Cadastrar</button>
+                                        <button href="../Admin/Admin.html" class="btn btn-default" >Cancelar</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        
-                    </fieldset>
-                </form>
+                    </form>
+                </fieldset>
+
             </div>
             <br></br>
         </div>
- <jsp:include page="../Cabecalho e Rodape/rodape.jsp"/>
+        <jsp:include page="../Cabecalho e Rodape/rodape.jsp"/>
 
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->	
@@ -179,3 +206,4 @@
 
     </body>
 </html>
+

@@ -7,15 +7,19 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.aplication.AplCadastrarAtor;
+import model.aplication.AplCadastrarDiretor;
 
 /**
  *
- * @author bianc
+ * @author Guibson
  */
 @WebServlet(name = "ctrCadastrarDiretor", urlPatterns = {"/ctrCadastrarDiretor"})
 public class ctrCadastrarDiretor extends HttpServlet {
@@ -32,17 +36,50 @@ public class ctrCadastrarDiretor extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ctrCadastrarDiretor</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ctrCadastrarDiretor at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+
+        String mensagem;
+        String operacao = request.getParameter("operacao");
+        String name = request.getParameter("nome");
+
+        int ret;
+        long id;
+        switch (operacao) {
+            case "inserir":
+
+                try {
+
+                    ret = AplCadastrarDiretor.inserirDiretor(name);
+                    if (ret == 0) {
+                        //  mensagem = "sucesso_cadastrar";
+                        //response.sendRedirect("Ator/CadastrarAtor.jsp?msg=" + mensagem);
+                    }
+                    if (ret == 1) {
+                        //  response.sendRedirect("sucesso.html");
+                    }
+                    if (ret == 2) {
+                        //response.sendRedirect("erro.html");
+                    }
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(ctrCadastrarAtor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                break;
+            case "excluir":
+
+                id = Long.parseLong(request.getParameter("id"));
+                ret = AplCadastrarDiretor.excluirDiretor(id);
+                if (ret == 0) {
+                    //  mensagem = "sucesso_cadastrar";
+                    //response.sendRedirect("Ator/CadastrarAtor.jsp?msg=" + mensagem);
+                }
+                if (ret == 1) {
+                    //  response.sendRedirect("sucesso.html");
+                }
+                if (ret == 2) {
+                    //response.sendRedirect("erro.html");
+                }
+
+                break;
         }
     }
 
@@ -86,3 +123,4 @@ public class ctrCadastrarDiretor extends HttpServlet {
     }// </editor-fold>
 
 }
+

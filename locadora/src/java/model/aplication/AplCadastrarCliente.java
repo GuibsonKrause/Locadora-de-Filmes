@@ -6,11 +6,16 @@
 package model.aplication;
 
 import DAO.ConexaoHibernate;
-import model.domain.Ator;
+import java.util.Calendar;
+import model.domain.Dependente;
+import model.domain.Socio;
+import org.hibernate.Criteria;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -18,20 +23,20 @@ import org.hibernate.Transaction;
  */
 public class AplCadastrarCliente {
 
-    public static int inserirAtor(String nome) throws ClassNotFoundException {
+    public static int inserirCliente(String nome, String sexo, Calendar data_nascimento, String end, String tel, String cpf) throws ClassNotFoundException {
 
         Session session = null;
         Transaction t = null;
         if ("".equals(nome)) {
             return 0;
         }
-        Ator a = new Ator();
-        a.setNome(nome);
+        Socio s = new Socio(cpf, end, tel, nome, data_nascimento, sexo, true);
+
         try {
             SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
             session = sessionFac.openSession();
             t = session.beginTransaction();
-            session.save(a);
+            session.save(s);
             t.commit();
             return 1;
         } catch (HibernateException e) {
@@ -42,19 +47,43 @@ public class AplCadastrarCliente {
         }
     }
 
-    public static int excluirAtor(long id) {
-        Ator a = new Ator();
-        a.setID(id);
+    public static int inserirDependente(Socio socio, String nome,  Calendar data_nascimento, String sexo) throws ClassNotFoundException {
+
+        Session session = null;
+        Transaction t = null;
+        if ("".equals(nome)) {
+            return 0;
+        }
+        Dependente d = new Dependente(socio, nome, data_nascimento, sexo, true);
+
+        try {
+            SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
+            session = sessionFac.openSession();
+            t = session.beginTransaction();
+            session.save(d);
+            t.commit();
+            return 1;
+        } catch (HibernateException e) {
+            t.rollback();
+            return 2;
+        } finally {
+            session.close();
+        }
+    }
+
+    public static int excluirSocio(long id) {
+        Socio s = new Socio();
+        s.setNum_inscricao(id);
 
         Transaction t = null;
         Session session = null;
 
         try {
-           SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
+            SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
             session = sessionFac.openSession();
             t = session.beginTransaction();
-            
-            session.delete(a);
+
+            session.delete(s);
             t.commit();
 
             return 1;
@@ -67,4 +96,6 @@ public class AplCadastrarCliente {
         }
 
     }
+
+   
 }

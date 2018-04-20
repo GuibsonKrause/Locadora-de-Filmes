@@ -6,7 +6,12 @@
 package model.aplication;
 
 import DAO.ConexaoHibernate;
-import model.domain.Ator;
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.List;
+import model.domain.Item;
+import model.domain.Locacao;
+import model.domain.Titulo;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,24 +19,25 @@ import org.hibernate.Transaction;
 
 /**
  *
- * @author bianc
+ * @author Guibson
  */
 public class AplCadastrarItem {
 
-    public static int inserirAtor(String nome) throws ClassNotFoundException {
+    public static int inserirItem(String numSerie, Calendar dtAquisicao, String tipoItem, Titulo titulo) throws ClassNotFoundException, ParseException {
 
         Session session = null;
         Transaction t = null;
-        if ("".equals(nome)) {
+        if ("".equals(titulo)) {
             return 0;
         }
-        Ator a = new Ator();
-        a.setNome(nome);
+
+        Item i = new Item(numSerie, dtAquisicao, tipoItem, titulo);
+
         try {
             SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
             session = sessionFac.openSession();
             t = session.beginTransaction();
-            session.save(a);
+            session.save(i);
             t.commit();
             return 1;
         } catch (HibernateException e) {
@@ -42,19 +48,19 @@ public class AplCadastrarItem {
         }
     }
 
-    public static int excluirAtor(long id) {
-        Ator a = new Ator();
-        a.setID(id);
+    public static int excluirClasse(long id) {
+        Item i = new Item();
+        i.setID(id);
 
         Transaction t = null;
         Session session = null;
 
         try {
-           SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
+            SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
             session = sessionFac.openSession();
             t = session.beginTransaction();
-            
-            session.delete(a);
+
+            session.delete(i);
             t.commit();
 
             return 1;

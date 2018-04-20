@@ -6,9 +6,11 @@
 package model.aplication;
 
 import DAO.ConexaoHibernate;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import model.domain.Classe;
 import org.hibernate.HibernateException;
@@ -22,19 +24,19 @@ import org.hibernate.Transaction;
  */
 public class AplCadastrarClasse {
 
-    public static int inserirClasse(String nome, Date data, Float valor) throws ClassNotFoundException, ParseException {
+    public static int inserirClasse(String nome, Calendar data, Float valor) throws ClassNotFoundException, ParseException {
 
         Session session = null;
         Transaction t = null;
         if ("".equals(nome)) {
             return 0;
         }
+        
        
-
              
         Classe c = new Classe();
         c.setNome(nome);
-        c.setPrazoDevoulcao(data);
+        c.setPrazoDevolucao(data);
         c.setValor(valor);
         
         

@@ -10,7 +10,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Cadastrar Locação</title>
 
 
@@ -31,57 +31,58 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        </head>
-        <body>
- <jsp:include page="../Cabecalho e Rodape/cabecalho.jsp"/>
+    </head>
+    <body>
+        <jsp:include page="../Cabecalho e Rodape/cabecalho.jsp"/>
 
-            <div class="container-fluid">
-                <div class="row">
-                    <form class="form-horizontal">
-                        <fieldset>
-                            <br></br>
-                            <!-- Form Name -->
-                            <h2 style="text-align: center;">Nova Locação</h2>
-                            <br></br>
+        <div class="container-fluid">
+            <div class="row">
 
+                <fieldset>
+                    <br></br>
+                    <!-- Form Name -->
+                    <h2 style="text-align: center;">Nova Locação</h2>
+                    <br></br>
 
+                    <form id="form" action="../ctrCadastrarLocacao" method="POST">
+                         <input class="hidden" name="operacao" value="inserir">
 
 
                         <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="Nome">Nome do Cliente</label>  
+                            <label class="col-md-4 control-label" for="Nome"></label>  
                             <div class="col-md-4">
                                 <input id="" name="Nome" type="text" placeholder="Nome do Cliente" class="form-control input-md" required="">
 
                             </div>
-                        </div>
+                            <br><br>
 
-                             <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="Nome">Número de Série</label>  
+                            <!-- Text input-->
+
+                            <label class="col-md-4 control-label" for="Nome"></label>  
                             <div class="col-md-4">
                                 <input id="" name="Nome" type="txt" placeholder="Número de Série" class="form-control input-md" required="">
 
                             </div>
-                        </div>
-                        
 
 
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="dinheiro">Dinheiro</label>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">R$</span>
-                                        <input id="dinero" name="dinheiro" class="form-control" placeholder="Valor do Filme" type="text" required="">
-                                    </div>
+
+                            <br><br>
+
+                            <label class="col-md-4 control-label" for="dinheiro"></label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">R$</span>
+                                    <input id="dinero" name="dinheiro" class="form-control" placeholder="Valor do Filme" type="text" required="">
                                 </div>
+
                             </div>
 
-       
-   
-                     
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="data">Data de Devolução Prevista</label>
+
+                            <br><br>
+
+
+                            <label class="col-md-4 control-label" for="data"></label>
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <span class="input-group-addon">
@@ -90,24 +91,28 @@
                                     <input id="data" name="Data de Devolução Presvista" class="form-control" placeholder="Data" type="date" required="">
                                 </div>
                             </div>
-                        </div>
+                            <br><br>
 
 
-                        <!-- Button (Double) -->
-                        <div class="form-group">
-                            <label class="col-md-5 control-label" for=""></label>
-                            <div class="col-md-5">
+                            <!-- Button (Double) -->
+                            <div class="form-group">
+                                <label class="col-md-5 control-label" for=""></label>
+                                <div class="col-md-5">
 
-                                <div class="ficon">
-                                    <a href="#" class="btn btn-default" role="button">Cadastrar</a>
-                                     <a href="../Admin/Admin.html" class="btn btn-default" role="button">Cancelar</a>
+                                    <div class="ficon">
+                                       <button type="submit" class="btn btn-default"  >Cadastrar</button>
+                                       <button href="../Admin/Admin.html" class="btn btn-default" >Cancelar</button>
 
+                                    </div>
+                                    <br></br> 
                                 </div>
-                                 <br></br> <br></br>
                             </div>
                         </div>
-
-                        <jsp:include page="../Cabecalho e Rodape/rodape.jsp"/>
+                    </form>
+                </fieldset>
+            </div>
+        </div>
+        <jsp:include page="../Cabecalho e Rodape/rodape.jsp"/>
 
 
 

@@ -5,17 +5,35 @@
  */
 package controller;
 
+import DAO.ConexaoHibernate;
+import com.mysql.jdbc.Util;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.aplication.AplCadastrarClasse;
+import model.aplication.AplCadastrarItem;
+import model.aplication.AplCadastrarTitulo;
+import model.domain.Titulo;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
- * @author bianc
+ * @author Guibson
  */
 @WebServlet(name = "ctrCadastrarItem", urlPatterns = {"/ctrCadastrarItem"})
 public class ctrCadastrarItem extends HttpServlet {
@@ -32,17 +50,82 @@ public class ctrCadastrarItem extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ctrCadastrarItem</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ctrCadastrarItem at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String mensagem;
+        String operacao = request.getParameter("operacao");
+
+        String titulo = request.getParameter("titulo");
+        String tipo = request.getParameter("tipo");
+        String numero = (request.getParameter("numero"));
+
+        String date = (request.getParameter("data"));
+
+        long id = Long.parseLong(request.getParameter("titulo"));
+
+        Titulo titul = null;
+        Session session = null;
+        SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
+        session = sessionFac.openSession();
+        Criteria criteria = session.createCriteria(Titulo.class);
+        criteria.add(Restrictions.eq("titulo", id));
+        List drs = criteria.list();
+        Iterator iterator = drs.iterator();
+
+        while (iterator.hasNext()) {
+            Titulo ti = (Titulo) iterator.next();
+
+            titul = ti;
+        }
+
+        Calendar data = null;
+
+        Date dataT;
+        try {
+            dataT = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+            data = Calendar.getInstance();
+            data.setTime(dataT);
+        } catch (ParseException ex) {
+            Logger.getLogger(ctrCadastrarClasse.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        int ret = 0;
+
+        switch (operacao) {
+            case "inserir": {
+
+                try {
+                    ret = AplCadastrarItem.inserirItem(numero, data, tipo, titul);
+                } catch (ParseException | ClassNotFoundException ex) {
+                    Logger.getLogger(ctrCadastrarItem.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                if (ret == 0) {
+                    //  mensagem = "sucesso_cadastrar";
+                    //response.sendRedirect("Ator/CadastrarAtor.jsp?msg=" + mensagem);
+                }
+                if (ret == 1) {
+                    //  response.sendRedirect("sucesso.html");
+                }
+                if (ret == 2) {
+                    //response.sendRedirect("erro.html");
+                }
+            }
+            break;
+            case "excluir":
+
+                id = Long.parseLong(request.getParameter("id"));
+                ret = AplCadastrarClasse.excluirClasse(id);
+                if (ret == 0) {
+                    //  mensagem = "sucesso_cadastrar";
+                    //response.sendRedirect("Ator/CadastrarAtor.jsp?msg=" + mensagem);
+                }
+                if (ret == 1) {
+                    //  response.sendRedirect("sucesso.html");
+                }
+                if (ret == 2) {
+                    //response.sendRedirect("erro.html");
+                }
+
+                break;
         }
     }
 

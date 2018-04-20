@@ -6,11 +6,17 @@
 package model.aplication;
 
 import DAO.ConexaoHibernate;
+import java.util.List;
 import model.domain.Ator;
+import model.domain.Classe;
+import model.domain.Diretor;
+import model.domain.Titulo;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -18,20 +24,20 @@ import org.hibernate.Transaction;
  */
 public class AplCadastrarTitulo {
 
-    public static int inserirAtor(String nome) throws ClassNotFoundException {
+   public static int inserirTitulo(String nome, List<Ator> atores, Diretor diretor, int ano, String sinopse, String categoria, Classe classe) {
 
         Session session = null;
         Transaction t = null;
         if ("".equals(nome)) {
             return 0;
         }
-        Ator a = new Ator();
-        a.setNome(nome);
+        Titulo ti = new Titulo(nome, ano, sinopse, categoria, atores, diretor, classe);
+        
         try {
             SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
             session = sessionFac.openSession();
             t = session.beginTransaction();
-            session.save(a);
+            session.save(ti);
             t.commit();
             return 1;
         } catch (HibernateException e) {
@@ -41,10 +47,14 @@ public class AplCadastrarTitulo {
             session.close();
         }
     }
+    
+    
+            
+  
 
     public static int excluirAtor(long id) {
-        Ator a = new Ator();
-        a.setID(id);
+        Titulo ti = new Titulo();
+        ti.setID(id);
 
         Transaction t = null;
         Session session = null;
@@ -54,7 +64,7 @@ public class AplCadastrarTitulo {
             session = sessionFac.openSession();
             t = session.beginTransaction();
             
-            session.delete(a);
+            session.delete(ti);
             t.commit();
 
             return 1;
@@ -67,4 +77,8 @@ public class AplCadastrarTitulo {
         }
 
     }
+
+    
+        
+    
 }

@@ -5,50 +5,50 @@
  */
 package model.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
  *
  * @author root
  */
-//@Entity
-public class Socio extends Cliente {
+@Entity
+public class Socio extends Cliente implements Serializable {
 
+    @OneToMany
+    private List<Dependente> dependentes = new ArrayList<>();
 
-    private String cpf;
-    
-    private String endereco;
-    
-    private String telefone;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Dependente> dependentes = new ArrayList();
-    
     public Socio() {
+        this.dependentes = new ArrayList<>();
     }
+    private String cpf;
 
-    public Socio(String cpf, String endereco, String telefone, Long numInscricao, String nome, Date dtNascimento, String sexo, boolean Ativo) {
-        super(numInscricao, nome, dtNascimento, sexo, Ativo);
+    private String endereco;
+
+    private String telefone;
+
+    public Socio(String cpf, String endereco, String telefone, String nome, Calendar dtNascimento, String sexo, boolean ativo) {
+        super(nome, dtNascimento, sexo, ativo);
+        this.dependentes = new ArrayList<>();
         this.cpf = cpf;
         this.endereco = endereco;
         this.telefone = telefone;
-       
     }
 
-    public Socio(String cpf, String endereco, String telefone, String nome, Date dtNascimento, String sexo, boolean Ativo) {
-        super(nome, dtNascimento, sexo, Ativo);
+    public Socio(String cpf, String endereco, String telefone, Long numInscircao, String nome, Calendar dtNascimento, String sexo, boolean ativo) {
+        super(numInscircao, nome, dtNascimento, sexo, ativo);
+        this.dependentes = new ArrayList<>();
         this.cpf = cpf;
         this.endereco = endereco;
         this.telefone = telefone;
     }
-
     public String getCpf() {
         return cpf;
     }
@@ -80,10 +80,5 @@ public class Socio extends Cliente {
     public void setDependentes(List<Dependente> dependentes) {
         this.dependentes = dependentes;
     }
-    
-    
-
-    
-   
 
 }

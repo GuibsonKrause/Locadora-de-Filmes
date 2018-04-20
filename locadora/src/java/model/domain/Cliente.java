@@ -1,66 +1,72 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.domain;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Calendar;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author root
- */
-//@Entity
-@Inheritance ( strategy = InheritanceType.JOINED)
-public abstract class Cliente implements Serializable {
+
+@Entity
+abstract class Cliente implements Serializable {
+
+    @Id
+    @GeneratedValue
+    private long num_inscricao;
+
     
-    //@Id
-    //@GeneratedValue
-    private Long numInscricao; //ID
-   
     private String nome;
-   
-    //@Temporal(javax.persistence.TemporalType.DATE)
-    private Date dtNascimento;
+
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Calendar dt_nascimento;
+
     
     private String sexo;
-    
-    private boolean Ativo;
 
+    private boolean ativo;
 
+    //CONSTUTORES
     public Cliente() {
     }
 
-    public Cliente(Long numInscricao, String nome, Date dtNascimento, String sexo, boolean Ativo) {
-        this.numInscricao = numInscricao;
+    public Cliente(long num_inscricao, String nome, Calendar dt_nascimento, String sexo, boolean ativo) {
+        this.num_inscricao = num_inscricao;
         this.nome = nome;
-        this.dtNascimento = dtNascimento;
+        this.dt_nascimento = dt_nascimento;
         this.sexo = sexo;
-        this.Ativo = Ativo;
+        this.ativo = ativo;
     }
 
-    public Cliente(String nome, Date dtNascimento, String sexo, boolean Ativo) {
+    public Cliente(String nome, Calendar dt_nascimento, String sexo, boolean ativo) {
         this.nome = nome;
-        this.dtNascimento = dtNascimento;
+        this.dt_nascimento = dt_nascimento;
         this.sexo = sexo;
-        this.Ativo = Ativo;
+        this.ativo = ativo;
     }
 
-    public Long getNumInscricao() {
-        return numInscricao;
+    
+    
+    public long getNum_inscricao() {
+        return num_inscricao;
     }
 
-    public void setNumInscricao(Long numInscricao) {
-        this.numInscricao = numInscricao;
+    public void setNum_inscricao(long num_inscricao) {
+        this.num_inscricao = num_inscricao;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
 
     public String getNome() {
         return nome;
@@ -70,12 +76,12 @@ public abstract class Cliente implements Serializable {
         this.nome = nome;
     }
 
-    public Date getDtNascimento() {
-        return dtNascimento;
+    public Calendar getDt_nascimento() {
+        return dt_nascimento;
     }
 
-    public void setDtNascimento(Date dtNascimento) {
-        this.dtNascimento = dtNascimento;
+    public void setDt_nascimento(Calendar dt_nascimento) {
+        this.dt_nascimento = dt_nascimento;
     }
 
     public String getSexo() {
@@ -86,16 +92,4 @@ public abstract class Cliente implements Serializable {
         this.sexo = sexo;
     }
 
-    public boolean isAtivo() {
-        return Ativo;
-    }
-
-    public void setAtivo(boolean Ativo) {
-        this.Ativo = Ativo;
-    }
-
-   
- 
-
-   
 }

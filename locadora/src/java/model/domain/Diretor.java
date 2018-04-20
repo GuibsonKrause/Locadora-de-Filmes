@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 /**
  *
- * @author root
+ * @author Guibson
  */
 @Entity
 public class Diretor implements Serializable {
@@ -22,6 +22,11 @@ public class Diretor implements Serializable {
     private String nome;
 
     public Diretor() {
+    }
+    
+    public Diretor(Long ID, String nome) {
+        this.ID = ID;
+        this.nome = nome;
     }
 
     public Diretor(String nome) {
@@ -36,11 +41,6 @@ public class Diretor implements Serializable {
         this.nome = nome;
     }
 
-    @Override
-    public String toString() {
-        return nome;
-    }
-
     public Long getID() {
         return ID;
     }
@@ -49,3 +49,4 @@ public class Diretor implements Serializable {
         this.ID = ID;
     }
 }
+

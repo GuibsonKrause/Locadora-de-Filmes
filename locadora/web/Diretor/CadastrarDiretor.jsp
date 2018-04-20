@@ -1,7 +1,7 @@
 <%-- 
     Document   : CadastrarDiretor
     Created on : 03/04/2018, 09:43:44
-    Author     : 2016122760198
+    Author     : Guibson
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -34,7 +34,6 @@
         
         <div class="container-fluid">
             <div class="row">
-                <form class="form-horizontal">
                     <fieldset>
                         <br></br>
                         <!-- Form Name -->
@@ -43,31 +42,35 @@
 
 
                         <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="Nome">Nome</label>  
-                            <div class="col-md-4">
-                                <input id="" name="" type="text" placeholder="Nome" class="form-control input-md" required="">
-
-                            </div>
-                        </div>
-
-
-                        <!-- Button (Double) -->
-                        <div class="form-group">
-                            <label class="col-md-5 control-label" for=""></label>
-                            <div class="col-md-5">
-                                <div class="ficon">
-                                    <a href="#" class="btn btn-default" role="button">Cadastrar</a>
-                                     <a href="../Admin/Admin.html" class="btn btn-default" role="button">Cancelar</a>
-
+                        <form id="form" action="../ctrCadastrarDiretor" method="POST">
+                            <input class="hidden" name="operacao" value="inserir">
+                            
+                        
+                            <!-- Text input-->
+                            <div class="form-group">
+                                
+                                <label class="col-md-4 control-label" for=""></label>  
+                                <div class="col-md-4">
+                                     <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome Diretor" required="">
                                 </div>
-                                <br>
-                                <br>
                             </div>
-                        </div>
+                             
+                            <!-- Button (Double) -->
+                            
+                            <div class="form-group">
+                                <label class="col-md-5 control-label" for=""></label>
+                                <div class="col-md-5">
+                                    <br>
+                                        <button type="submit" class="btn btn-default"  >Cadastrar</button>
+                                       <button href="../Admin/Admin.html" class="btn btn-default" >Cancelar</button>
+                                
+                                    <br>
+                                    <br>
+                                </div>
+                            </div>
+                        </form>
 
                     </fieldset>
-                </form>
 
             </div>
             <jsp:include page="../Cabecalho e Rodape/rodape.jsp"/>
@@ -93,3 +96,4 @@
 
     </body>
 </html>
+

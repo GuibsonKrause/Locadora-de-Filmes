@@ -1,43 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.domain;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
-/**
- *
- * @author root
- */
-//@Entity
-public class Dependente extends Cliente{
+
+@Entity
+public class Dependente extends Cliente implements Serializable {
     
-    //@Id
-    //@GeneratedValue
-   // private Long numInscricao;
+   @ManyToOne
+    private Socio socio;
+
     
-    @ManyToOne
-    Socio associado;
+    public Dependente(){
+    }    
 
-    public Dependente() {
+    public Dependente(Socio socio, long num_inscricao, String nome, Calendar dt_nascimento, String sexo, boolean ativo) {
+        super(num_inscricao, nome, dt_nascimento, sexo, ativo);
+        this.socio = socio;
     }
 
-    public Dependente(Socio associado, Long numInscricao, String nome, Date dtNascimento, String sexo, boolean Ativo) {
-        super(numInscricao, nome, dtNascimento, sexo, Ativo);
-        this.associado = associado;
+    public Dependente(Socio socio, String nome, Calendar dt_nascimento, String sexo, boolean ativo) {
+        super(nome, dt_nascimento, sexo, ativo);
     }
-
-    public Dependente(Socio associado, String nome, Date dtNascimento, String sexo, boolean Ativo) {
-        super(nome, dtNascimento, sexo, Ativo);
-        this.associado = associado;
-    }
-
-
-
+    
+   
 }

@@ -6,6 +6,7 @@
 package model.domain;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -29,7 +30,7 @@ public class Item implements Serializable {
     private String numSerie;
  
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dtAquisicao;
+    private Calendar dtAquisicao;
 
     
     private String tipoItem;
@@ -44,21 +45,21 @@ public class Item implements Serializable {
     }
     
     
-    public Item(Long ID, String numSerie, Date dtAquisicao, String tipoItem, Titulo titulo, List<Locacao> locacoes) {
+    public Item(Long ID, String numSerie, Calendar dtAquisicao, String tipoItem, Titulo titulo) {
         this.ID = ID;
         this.numSerie = numSerie;
         this.dtAquisicao = dtAquisicao;
         this.tipoItem = tipoItem;
         this.titulo = titulo;
-        this.locacoes = locacoes;
+        
     }
 
-    public Item(String numSerie, Date dtAquisicao, String tipoItem, Titulo titulo, List<Locacao> locacoes) {
+    public Item(String numSerie, Calendar dtAquisicao, String tipoItem, Titulo titulo) {
         this.numSerie = numSerie;
         this.dtAquisicao = dtAquisicao;
         this.tipoItem = tipoItem;
         this.titulo = titulo;
-        this.locacoes = locacoes;
+        
     }
 
     public Long getID() {
@@ -77,11 +78,11 @@ public class Item implements Serializable {
         this.numSerie = numSerie;
     }
 
-    public Date getDtAquisicao() {
+    public Calendar getDtAquisicao() {
         return dtAquisicao;
     }
 
-    public void setDtAquisicao(Date dtAquisicao) {
+    public void setDtAquisicao(Calendar dtAquisicao) {
         this.dtAquisicao = dtAquisicao;
     }
 
