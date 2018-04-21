@@ -9,6 +9,7 @@ import DAO.ConexaoHibernate;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -48,7 +49,7 @@ public class ctrCadastrarTitulo extends HttpServlet {
 
         String operacao = request.getParameter("operacao");
         String nome = request.getParameter("nome");
-        String ators[] = request.getParameterValues("atores");
+        String idAtores[] = request.getParameterValues("atores");
         long idDiretor = Long.parseLong(request.getParameter("diretores"));
         int ano = Integer.parseInt(request.getParameter("ano"));
         String sinopse = request.getParameter("sinopse");
@@ -56,8 +57,6 @@ public class ctrCadastrarTitulo extends HttpServlet {
         long idClasse = Long.parseLong(request.getParameter("classes"));
 
         int ret;
-        long idAtor;
-       
 
         List<Ator> atores = new ArrayList();
 
@@ -68,28 +67,22 @@ public class ctrCadastrarTitulo extends HttpServlet {
 
             case "inserir":
 
-               
                 Session session = null;
                 SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
                 session = sessionFac.openSession();
                 Criteria criteria = null;
                 Iterator iterator = null;
-               
+
                 //Ator
                 criteria = session.createCriteria(Ator.class);
+
                 List ats = criteria.list();
                 iterator = ats.iterator();
-                
-                
 
-                while (iterator.hasNext()) {
-                    Ator a = (Ator) iterator.next();
-                    idAtor = a.getID();
-
-                     if (comparaAtor(idAtor, ators) == 1) {
-                        atores.add(a);
-                    }
-
+                Ator idAtor = new Ator();
+                for (String idAtore : idAtores) {
+                    idAtor.setID(Long.parseLong(idAtore));
+                    atores.add(idAtor);
                 }
 
                 //diretor
@@ -100,7 +93,6 @@ public class ctrCadastrarTitulo extends HttpServlet {
 
                 while (iterator.hasNext()) {
                     Diretor d = (Diretor) iterator.next();
-
                     diretor = d;
                 }
 
@@ -118,7 +110,7 @@ public class ctrCadastrarTitulo extends HttpServlet {
                 /*=======INSERE===============================================================================================*/
                 ret = AplCadastrarTitulo.inserirTitulo(nome, atores, diretor, ano, sinopse, categoria, classe);
 
-                  if (ret == 0) {
+                if (ret == 0) {
                     //  mensagem = "sucesso_cadastrar";
                     //response.sendRedirect("Ator/CadastrarAtor.jsp?msg=" + mensagem);
                 }
@@ -128,7 +120,7 @@ public class ctrCadastrarTitulo extends HttpServlet {
                 if (ret == 2) {
                     //response.sendRedirect("erro.html");
                 }
-               
+
                 break;
         }
     }
@@ -172,19 +164,4 @@ public class ctrCadastrarTitulo extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-      private long comparaAtor(long idAtor, String[] atores) {
-
-        int i = 0;
-        long idAt;
-
-        while (i < atores.length) {
-            idAt = Long.parseLong(atores[i]);
-            if (idAtor == idAt) {
-                return 1;
-            }
-            i++;
-        }
-        return 0;
-    }
-    
 }

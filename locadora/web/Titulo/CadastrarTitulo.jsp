@@ -90,7 +90,7 @@
 
                                                     out.println("<td style='text-align: center'>" + ((Ator) atores.get(i)).getID() + "</td>");
                                                     out.println("<td style='text-align: center'>" + ((Ator) atores.get(i)).getNome() + "</td>");
-                                                    out.println("<td style='text-align: center'>" + "<input type='checkbox' name='atores' value='Selecione'" + "</tr>");
+                                                    out.println("<td style='text-align: center'>" + "<input type='checkbox' name='atores' value='" + ((Ator) atores.get(i)).getID()  + "'>" + "</td>");
 
                                                     out.println("</tr>");
                                                    
