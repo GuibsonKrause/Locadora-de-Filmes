@@ -26,7 +26,7 @@ import javax.persistence.Transient;
 public class Item implements Serializable {
     @Id
     @GeneratedValue
-    private Long ID;
+    private Long IdSerie;
     private String numSerie;
  
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -45,8 +45,8 @@ public class Item implements Serializable {
     }
     
     
-    public Item(Long ID, String numSerie, Calendar dtAquisicao, String tipoItem, Titulo titulo) {
-        this.ID = ID;
+    public Item(Long IdSerie, String numSerie, Calendar dtAquisicao, String tipoItem, Titulo titulo) {
+        this.IdSerie = IdSerie;
         this.numSerie = numSerie;
         this.dtAquisicao = dtAquisicao;
         this.tipoItem = tipoItem;
@@ -63,11 +63,11 @@ public class Item implements Serializable {
     }
 
     public Long getID() {
-        return ID;
+        return IdSerie;
     }
 
-    public void setID(Long ID) {
-        this.ID = ID;
+    public void setID(Long IdSerie) {
+        this.IdSerie = IdSerie;
     }
 
     public String getNumSerie() {

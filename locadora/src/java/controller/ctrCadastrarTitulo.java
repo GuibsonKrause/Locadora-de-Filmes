@@ -53,12 +53,11 @@ public class ctrCadastrarTitulo extends HttpServlet {
         int ano = Integer.parseInt(request.getParameter("ano"));
         String sinopse = request.getParameter("sinopse");
         String categoria = request.getParameter("categoria");
-        long idClasse = Long.parseLong(request.getParameter("classe"));
+        long idClasse = Long.parseLong(request.getParameter("classes"));
 
         int ret;
-        long id;
-        long idTitulo;
-        String saida;
+        long idAtor;
+       
 
         List<Ator> atores = new ArrayList();
 
@@ -67,7 +66,7 @@ public class ctrCadastrarTitulo extends HttpServlet {
 
         switch (operacao) {
 
-            case "cadastrar":
+            case "inserir":
 
                
                 Session session = null;
@@ -85,17 +84,17 @@ public class ctrCadastrarTitulo extends HttpServlet {
 
                 while (iterator.hasNext()) {
                     Ator a = (Ator) iterator.next();
-                    id = a.getID();
+                    idAtor = a.getID();
 
-                     if (comparaAtor(id, ators) == 1) {
+                     if (comparaAtor(idAtor, ators) == 1) {
                         atores.add(a);
                     }
 
                 }
 
-                /*=======VERIFICA DIRETOR===============================================================================================*/
+                //diretor
                 criteria = session.createCriteria(Diretor.class);
-                criteria.add(Restrictions.eq("id", idDiretor));
+                criteria.add(Restrictions.eq("idDiretor", idDiretor));
                 List drs = criteria.list();
                 iterator = drs.iterator();
 
@@ -105,9 +104,9 @@ public class ctrCadastrarTitulo extends HttpServlet {
                     diretor = d;
                 }
 
-                /*=======VERIFICA CLASSE===============================================================================================*/
+                //Classe
                 criteria = session.createCriteria(Classe.class);
-                criteria.add(Restrictions.eq("id", idClasse));
+                criteria.add(Restrictions.eq("idClasse", idClasse));
                 List cls = criteria.list();
                 iterator = cls.iterator();
 
@@ -119,6 +118,16 @@ public class ctrCadastrarTitulo extends HttpServlet {
                 /*=======INSERE===============================================================================================*/
                 ret = AplCadastrarTitulo.inserirTitulo(nome, atores, diretor, ano, sinopse, categoria, classe);
 
+                  if (ret == 0) {
+                    //  mensagem = "sucesso_cadastrar";
+                    //response.sendRedirect("Ator/CadastrarAtor.jsp?msg=" + mensagem);
+                }
+                if (ret == 1) {
+                    //  response.sendRedirect("sucesso.html");
+                }
+                if (ret == 2) {
+                    //response.sendRedirect("erro.html");
+                }
                
                 break;
         }
@@ -163,14 +172,14 @@ public class ctrCadastrarTitulo extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-      private long comparaAtor(long id, String[] atores) {
+      private long comparaAtor(long idAtor, String[] atores) {
 
         int i = 0;
         long idAt;
 
         while (i < atores.length) {
-            idAt = Integer.parseInt(atores[i]);
-            if (id == idAt) {
+            idAt = Long.parseLong(atores[i]);
+            if (idAtor == idAt) {
                 return 1;
             }
             i++;

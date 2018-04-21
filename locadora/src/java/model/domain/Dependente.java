@@ -21,13 +21,14 @@ public class Dependente extends Cliente implements Serializable {
     public Dependente(){
     }    
 
-    public Dependente(Socio socio, long num_inscricao, String nome, Calendar dt_nascimento, String sexo, boolean ativo) {
-        super(num_inscricao, nome, dt_nascimento, sexo, ativo);
+    public Dependente(Socio socio, long numInscricao, String nome, Calendar dt_nascimento, String sexo, boolean ativo) {
+        super(numInscricao, nome, dt_nascimento, sexo, ativo);
         this.socio = socio;
     }
 
     public Dependente(Socio socio, String nome, Calendar dt_nascimento, String sexo, boolean ativo) {
         super(nome, dt_nascimento, sexo, ativo);
+        this.socio = socio;
     }
     
    

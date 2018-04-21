@@ -4,6 +4,7 @@
     Author     : Guibson
 --%>
 
+<%@page import="java.util.Iterator"%>
 <%@page import="model.domain.Classe"%>
 <%@page import="model.domain.Diretor"%>
 <%@page import="java.util.List"%>
@@ -76,7 +77,9 @@
                                             <%
                                                 SessionFactory sf = ConexaoHibernate.getSessionFactory();
                                                 Session s = sf.openSession();
-                                                Criteria c = s.createCriteria(Ator.class);
+                                                Criteria c = null; 
+                                                
+                                                c = s.createCriteria(Ator.class);
 
                                                 List atores = c.list();
                                                 int i;
@@ -108,12 +111,20 @@
                             <div class="col-md-4">
                                 <select class="form-control" name="diretor">
                                     <%
-                                        c = s.createCriteria(Diretor.class);
-                                        List diretores = c.list();
-                                        for (i = 0; i < diretores.size(); i++) {
 
-                                            out.println("<option value=''>" + ((Diretor) diretores.get(i)).getNome()  + "</option>");
+                                        c = s.createCriteria(Diretor.class);
+
+                                        List diretores = c.list();
+
+                                        Iterator in = diretores.iterator();
+                                      
+                                        while (in.hasNext()) {
+                                            
+                                            Diretor d = (Diretor) in.next();
+                                            out.println("<option value='" + d.getID() + "'>" + d.getNome() + "</opttion>");
+
                                         }
+
                                     %>
                                 </select>
                             </div>
@@ -143,13 +154,18 @@
                             <br><br>
                             <label class="col-md-4 control-label" for="Classe"></label>
                             <div class="col-md-4">
-                                <select class="form-control" name="classe">
+                                <select class="form-control" name="classes">
                                     <%
                                         c = s.createCriteria(Classe.class);
                                         List classes = c.list();
-                                        for (i = 0; i < classes.size(); i++) {
+                                  
+                                        in = classes.iterator();
+                                      
+                                        while (in.hasNext()) {
+                                            
+                                            Classe cl = (Classe) in.next();
+                                            out.println("<option value='" + cl.getID() + "'>" + cl.getNome() + "</opttion>");
 
-                                            out.println("<option value=''>" + ((Classe) classes.get(i)).getNome() + "</option>");
                                         }
                                     %>
                                 </select>

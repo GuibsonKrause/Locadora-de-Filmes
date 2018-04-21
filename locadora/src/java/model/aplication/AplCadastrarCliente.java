@@ -96,6 +96,30 @@ public class AplCadastrarCliente {
         }
 
     }
+    public static int excluirDependente(long id) {
+        Dependente d = new Dependente();
+        d.setNum_inscricao(id);
 
+        Transaction t = null;
+        Session session = null;
+
+        try {
+            SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
+            session = sessionFac.openSession();
+            t = session.beginTransaction();
+
+            session.delete(d);
+            t.commit();
+
+            return 1;
+
+        } catch (HibernateException e) {
+            t.rollback();
+            return 2;
+        } finally {
+            session.close();
+        }
+
+    }
    
 }

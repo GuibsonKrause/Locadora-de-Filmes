@@ -5,9 +5,11 @@
 --%>
 
 <%@page import="model.domain.Socio"%>
+<%@page import="model.domain.Titulo"%>
 <%@page import="java.util.List"%>
 <%@page import="org.hibernate.Criteria"%>
 <%@page import="org.hibernate.Session"%>
+<%@page import="java.util.Iterator"%>
 <%@page import="DAO.ConexaoHibernate"%>
 <%@page import="org.hibernate.SessionFactory"%>
 <%@page import="org.hibernate.SessionFactory"%>
@@ -57,7 +59,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="nome"></label>  
                             <div class="col-md-4">
-                                <input id="" name="nomeDependente" type="text" placeholder="Nome" class="form-control input-md" required="">
+                                <input id="" name="nome" type="text" placeholder="Nome" class="form-control input-md" required="">
 
                             </div>
 
@@ -99,12 +101,21 @@
                                         Criteria c;
 
                                         c = s.createCriteria(Socio.class);
-                                        List socios = c.list();
-                                        int i;
-                                        for (i = 0; i < socios.size(); i++) {
 
-                                            out.println("<option value=''>" + ((Socio) socios.get(i)).getNome() + "</option>");
+                                        List socios = c.list();
+
+                                        Iterator i = socios.iterator();
+
+                                        while (i.hasNext()) {
+                                            
+                                            
+                                            Socio so = (Socio) i.next();
+
+                                            out.println("<option value='" + so.getNum_inscricao() + "'>" + so.getNome() + "</opttion>");
+
                                         }
+
+
                                     %>
 
                                 </select>

@@ -7,15 +7,12 @@ package controller;
 
 import DAO.ConexaoHibernate;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import static java.util.Spliterators.iterator;
-import static java.util.Spliterators.iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -26,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.aplication.AplCadastrarClasse;
 import model.aplication.AplCadastrarCliente;
 import model.domain.Socio;
-import model.domain.Titulo;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -95,18 +92,18 @@ public class ctrCadastrarCliente extends HttpServlet {
             }
             break;
             case "inserirDependente": {
-                //String idSocio = request.getParameter("idSocio");
-             
-                nome = request.getParameter("nomeDependente");
+                
+  
 
-                id = Long.parseLong(request.getParameter("socios"));
+                long numInscricao = Long.parseLong(request.getParameter("socios"));
                
                 Socio socio = null;
                 Session session = null;
+          
                 SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
                 session = sessionFac.openSession();
-                Criteria criteria = session.createCriteria(Titulo.class);
-                criteria.add(Restrictions.eq("socios", id));
+                Criteria criteria = session.createCriteria(Socio.class);
+                criteria.add(Restrictions.eq("numInscricao", numInscricao));
                 List drs = criteria.list();
                 Iterator iterator = drs.iterator();
 

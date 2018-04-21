@@ -42,8 +42,8 @@ public class Socio extends Cliente implements Serializable {
         this.telefone = telefone;
     }
 
-    public Socio(String cpf, String endereco, String telefone, Long numInscircao, String nome, Calendar dtNascimento, String sexo, boolean ativo) {
-        super(numInscircao, nome, dtNascimento, sexo, ativo);
+    public Socio(String cpf, String endereco, String telefone, Long numInscricao, String nome, Calendar dtNascimento, String sexo, boolean ativo) {
+        super(numInscricao, nome, dtNascimento, sexo, ativo);
         this.dependentes = new ArrayList<>();
         this.cpf = cpf;
         this.endereco = endereco;

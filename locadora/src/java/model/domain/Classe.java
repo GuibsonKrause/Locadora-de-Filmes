@@ -6,12 +6,15 @@
 package model.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import static javax.persistence.TemporalType.DATE;
 
 /**
@@ -23,11 +26,14 @@ public class Classe implements Serializable {
 
     @Id
     @GeneratedValue
-    private Long ID;
+    private Long idClasse;
     
     private String nome;
     
     private float valor;
+    
+     @OneToMany
+    private List<Titulo> titulo = new ArrayList<>();
     
     private Calendar prazoDevoulcao;
 
@@ -35,6 +41,13 @@ public class Classe implements Serializable {
     }
 
     public Classe(String nome, float valor, Calendar prazoDevoulcao) {
+        this.nome = nome;
+        this.valor = valor;
+        this.prazoDevoulcao = prazoDevoulcao;
+    }
+
+    public Classe(Long idClasse, String nome, float valor, Calendar prazoDevoulcao) {
+        this.idClasse = idClasse;
         this.nome = nome;
         this.valor = valor;
         this.prazoDevoulcao = prazoDevoulcao;
@@ -73,11 +86,11 @@ public class Classe implements Serializable {
     }
 
     public Long getID() {
-        return ID;
+        return idClasse;
     }
 
-    public void setID(Long ID) {
-        this.ID = ID;
+    public void setID(Long idClasse) {
+        this.idClasse = idClasse;
     }
 
    

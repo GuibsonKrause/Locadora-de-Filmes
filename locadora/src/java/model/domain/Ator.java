@@ -6,6 +6,8 @@
 package model.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
 
@@ -18,16 +20,19 @@ public class Ator implements Serializable {
 
     @Id
     @GeneratedValue
-    private Long ID;
+    private Long idAtor;
     
     
     private String nome;
 
+     @ManyToMany
+    private List<Titulo> titulo = new ArrayList<>();
+    
     public Ator() {
     }
 
-    public Ator(Long ID, String nome) {
-        this.ID = ID;
+    public Ator(Long idAtor, String nome) {
+        this.idAtor = idAtor;
         this.nome = nome;
     }
 
@@ -36,11 +41,11 @@ public class Ator implements Serializable {
     }
 
     public Long getID() {
-        return ID;
+        return idAtor;
     }
 
-    public void setID(Long ID) {
-        this.ID = ID;
+    public void setID(Long idAtor) {
+        this.idAtor = idAtor;
     }
 
     public String getNome() {
@@ -50,6 +55,7 @@ public class Ator implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
 
     
 }

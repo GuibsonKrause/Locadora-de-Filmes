@@ -6,6 +6,8 @@
 package model.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -17,15 +19,18 @@ public class Diretor implements Serializable {
 
     @Id
     @GeneratedValue
-    private Long ID;
+    private Long idDiretor;
 
     private String nome;
 
+     @OneToMany
+    private List<Titulo> titulo = new ArrayList<>();
+    
     public Diretor() {
     }
     
-    public Diretor(Long ID, String nome) {
-        this.ID = ID;
+    public Diretor(Long idDiretor, String nome) {
+        this.idDiretor = idDiretor;
         this.nome = nome;
     }
 
@@ -42,11 +47,11 @@ public class Diretor implements Serializable {
     }
 
     public Long getID() {
-        return ID;
+        return idDiretor;
     }
 
-    public void setID(Long ID) {
-        this.ID = ID;
+    public void setID(Long idDiretor) {
+        this.idDiretor = idDiretor;
     }
 }
 

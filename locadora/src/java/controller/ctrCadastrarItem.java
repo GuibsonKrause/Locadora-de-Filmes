@@ -53,50 +53,55 @@ public class ctrCadastrarItem extends HttpServlet {
         String mensagem;
         String operacao = request.getParameter("operacao");
 
-        String titulo = request.getParameter("titulo");
+        long idTitulo = Long.parseLong(request.getParameter("titulos"));
+      
         String tipo = request.getParameter("tipo");
         String numero = (request.getParameter("numero"));
 
         String date = (request.getParameter("data"));
+        String nascimento = request.getParameter("dataDeNascimento");
+        Calendar dataC = null;
 
-        long id = Long.parseLong(request.getParameter("titulo"));
+        Date dataD;
+        try {
+            dataD = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+            dataC = Calendar.getInstance();
+            dataC.setTime(dataD);
+        } catch (ParseException ex) {
+            Logger.getLogger(ctrCadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-        Titulo titul = null;
+        
+
+        Titulo titulo = null;
         Session session = null;
         SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
         session = sessionFac.openSession();
         Criteria criteria = session.createCriteria(Titulo.class);
-        criteria.add(Restrictions.eq("titulo", id));
+        criteria.add(Restrictions.eq("idTitulo", idTitulo));
         List drs = criteria.list();
         Iterator iterator = drs.iterator();
 
         while (iterator.hasNext()) {
             Titulo ti = (Titulo) iterator.next();
 
-            titul = ti;
+            titulo = ti;
         }
 
-        Calendar data = null;
-
-        Date dataT;
-        try {
-            dataT = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-            data = Calendar.getInstance();
-            data.setTime(dataT);
-        } catch (ParseException ex) {
-            Logger.getLogger(ctrCadastrarClasse.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
 
         int ret = 0;
 
         switch (operacao) {
             case "inserir": {
 
-                try {
-                    ret = AplCadastrarItem.inserirItem(numero, data, tipo, titul);
-                } catch (ParseException | ClassNotFoundException ex) {
-                    Logger.getLogger(ctrCadastrarItem.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                
+            try {
+                ret = AplCadastrarItem.inserirItem(numero, dataC, tipo, titulo);
+            } catch (ClassNotFoundException | ParseException ex) {
+                Logger.getLogger(ctrCadastrarItem.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               
 
                 if (ret == 0) {
                     //  mensagem = "sucesso_cadastrar";
@@ -111,7 +116,7 @@ public class ctrCadastrarItem extends HttpServlet {
             }
             break;
             case "excluir":
-
+                long id;
                 id = Long.parseLong(request.getParameter("id"));
                 ret = AplCadastrarClasse.excluirClasse(id);
                 if (ret == 0) {

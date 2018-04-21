@@ -4,6 +4,7 @@
     Author     : 2016122760198
 --%>
 
+<%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page import="model.domain.Titulo"%>
 <%@page import="org.hibernate.Criteria"%>
@@ -60,19 +61,22 @@
 
                             <label class="col-md-4 control-label" for="Titulo"></label>  
                             <div class="col-md-4">
-                                <select id="titulo" class="form-control" name="titulo">
+                                <select id="titulo" class="form-control" name="titulos">
                                     <%
                                         SessionFactory sf = ConexaoHibernate.getSessionFactory();
                                         Session s = sf.openSession();
                                         Criteria c;
                                         c = s.createCriteria(Titulo.class);
 
-                                        List titulos = c.list();
-                                        int i;
 
-                                        for (i = 0; i < titulos.size(); i++) {
+                                        List titulos = c.list();
+
+                                        Iterator in = titulos.iterator();
+                                      
+                                        while (in.hasNext()) {
                                             
-                                            out.println("<option value='" + ((Titulo) titulos.get(i)).getID() + "'>" + ((Titulo) titulos.get(i)).getNome() + "</opttion>");
+                                            Titulo d = (Titulo) in.next();
+                                            out.println("<option value='" + d.getID() + "'>" + d.getNome() + "</opttion>");
 
                                         }
 

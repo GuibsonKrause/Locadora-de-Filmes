@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 /**
  *
@@ -25,7 +27,7 @@ public class Titulo implements Serializable {
 
     @Id
     @GeneratedValue
-    private Long ID;
+    private Long idTitulo;
     
     private String nome;
     
@@ -35,18 +37,19 @@ public class Titulo implements Serializable {
     
     private String categoria;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+   @ManyToMany(fetch = FetchType.EAGER)
     List<Ator> atores;
     @ManyToOne
     Diretor diretor;
     @ManyToOne
     Classe classe;
 
+
     public Titulo() {
     }
 
-    public Titulo(Long ID, String nome, int ano, String sinopse, String categoria, List<Ator> atores, Diretor diretor, Classe classe) {
-        this.ID = ID;
+    public Titulo(Long idTitulo, String nome, int ano, String sinopse, String categoria, List<Ator> atores, Diretor diretor, Classe classe) {
+        this.idTitulo = idTitulo;
         this.nome = nome;
         this.ano = ano;
         this.sinopse = sinopse;
@@ -67,11 +70,11 @@ public class Titulo implements Serializable {
     }
 
     public Long getID() {
-        return ID;
+        return idTitulo;
     }
 
-    public void setID(Long ID) {
-        this.ID = ID;
+    public void setID(Long idTitulo) {
+        this.idTitulo = idTitulo;
     }
 
     public String getNome() {

@@ -16,7 +16,7 @@ abstract class Cliente implements Serializable {
 
     @Id
     @GeneratedValue
-    private long num_inscricao;
+    private long numInscricao;
 
     
     private String nome;
@@ -34,8 +34,8 @@ abstract class Cliente implements Serializable {
     public Cliente() {
     }
 
-    public Cliente(long num_inscricao, String nome, Calendar dt_nascimento, String sexo, boolean ativo) {
-        this.num_inscricao = num_inscricao;
+    public Cliente(long numInscricao, String nome, Calendar dt_nascimento, String sexo, boolean ativo) {
+        this.numInscricao = numInscricao;
         this.nome = nome;
         this.dt_nascimento = dt_nascimento;
         this.sexo = sexo;
@@ -52,11 +52,11 @@ abstract class Cliente implements Serializable {
     
     
     public long getNum_inscricao() {
-        return num_inscricao;
+        return numInscricao;
     }
 
-    public void setNum_inscricao(long num_inscricao) {
-        this.num_inscricao = num_inscricao;
+    public void setNum_inscricao(long numInscricao) {
+        this.numInscricao = numInscricao;
     }
 
     public boolean isAtivo() {
