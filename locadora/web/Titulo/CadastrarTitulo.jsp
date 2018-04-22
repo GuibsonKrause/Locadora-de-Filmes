@@ -77,8 +77,8 @@
                                             <%
                                                 SessionFactory sf = ConexaoHibernate.getSessionFactory();
                                                 Session s = sf.openSession();
-                                                Criteria c = null; 
-                                                
+                                                Criteria c = null;
+
                                                 c = s.createCriteria(Ator.class);
 
                                                 List atores = c.list();
@@ -90,79 +90,80 @@
 
                                                     out.println("<td style='text-align: center'>" + ((Ator) atores.get(i)).getID() + "</td>");
                                                     out.println("<td style='text-align: center'>" + ((Ator) atores.get(i)).getNome() + "</td>");
-                                                    out.println("<td style='text-align: center'>" + "<input type='checkbox' name='atores' value='" + ((Ator) atores.get(i)).getID()  + "'>" + "</td>");
+                                                    out.println("<td style='text-align: center'>" + "<input type='checkbox' name='atores' value='" + ((Ator) atores.get(i)).getID() + "'>" + "</td>");
 
                                                     out.println("</tr>");
-                                                   
+
                                                 }
-                                                
+
                                             %>
 
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-<br><br>
                             <br><br>
                             <br><br>
                             <br><br>
-                             <div class="form-group">
-                            <label class="col-md-4 control-label" for="diretor"></label>
-                            <div class="col-md-4">
-                                <select class="form-control" name="diretor">
-                                    <%
+                            <br><br>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="diretor"></label>
+                                <div class="col-md-4">
+                                    <select class="form-control" name="diretores">
+                                        <%                                       
+                                            c = s.createCriteria(Diretor.class);
 
-                                        c = s.createCriteria(Diretor.class);
+                                            List diretores = c.list();
 
-                                        List diretores = c.list();
+                                            Iterator in = diretores.iterator();
+                                            int pular = 0;
+                                            while (in.hasNext()) {
 
-                                        Iterator in = diretores.iterator();
-                                      
-                                        while (in.hasNext()) {
-                                            
-                                            Diretor d = (Diretor) in.next();
-                                            out.println("<option value='" + d.getID() + "'>" + d.getNome() + "</opttion>");
+                                                Diretor d = (Diretor) in.next();
+                                                out.println("<option value='" + d.getID() + "'>" + d.getNome() + "</opttion>");
+                                                pular++;
+                                            }
+                                            for(int br = 0; br < pular; br++){
+                                                out.println("<br><br>");
+                                            }
 
-                                        }
-
-                                    %>
-                                </select>
+                                        %>
+                                    </select>
+                                </div>
                             </div>
-                             </div>
                             <br></br>
 
 
 
                             <!-- Text input-->
-<div class="form-group">
-                            <label class="col-md-4 control-label" for="Ano"></label>  
-                            <div class="col-md-4">
-                                <input id="ano" name="ano" type="number" placeholder="Ano" class="form-control input-md" required="">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="Ano"></label>  
+                                <div class="col-md-4">
+                                    <input id="ano" name="ano" type="number" placeholder="Ano" class="form-control input-md" required="">
+                                </div>
                             </div>
-</div>
 
 
                             <!-- Textarea -->
                             <br><br>
                             <div class="form-group">
-                            <label class="col-md-4 control-label" for="Sinopse"></label>
-                            <div class="col-md-4">                     
-                                <textarea class="form-control" id="sinopse" name="sinopse"  placeholder="Sinopse" rows="3" required=""></textarea>
-                            </div>
+                                <label class="col-md-4 control-label" for="Sinopse"></label>
+                                <div class="col-md-4">                     
+                                    <textarea class="form-control" id="sinopse" name="sinopse"  placeholder="Sinopse" rows="3" required=""></textarea>
+                                </div>
                             </div>
                             <br><br>
                             <br><br>
                             <label class="col-md-4 control-label" for="Classe"></label>
                             <div class="col-md-4">
                                 <select class="form-control" name="classes">
-                                    <%
-                                        c = s.createCriteria(Classe.class);
+                                    <%                                        c = s.createCriteria(Classe.class);
                                         List classes = c.list();
-                                  
+
                                         in = classes.iterator();
-                                      
+
                                         while (in.hasNext()) {
-                                            
+
                                             Classe cl = (Classe) in.next();
                                             out.println("<option value='" + cl.getID() + "'>" + cl.getNome() + "</opttion>");
 
@@ -177,10 +178,10 @@
                             <label class="col-md-4 control-label" for="Categoria"></label>
                             <div class="col-md-4">
                                 <select class="form-control" name="categoria">
-                                    <option value="Ação">Ação</option>
+                                    <option value="Acao">Ação</option>
                                     <option value="Drama">Drama</option>
                                     <option value="Comédia">Comédia</option>
-                                    <option value="Ficção Científica">Ficção Científica</option>
+                                    <option value="Ficcao Cientifica">Ficção Científica</option>
                                     <option value="Policial">Policial</option>
                                     <option value="Romance">Romance</option>
                                     <option value="Suspense">Suspense</option>

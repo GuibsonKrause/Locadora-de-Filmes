@@ -6,6 +6,7 @@
 package model.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -38,7 +39,7 @@ public class Titulo implements Serializable {
     private String categoria;
 
    @ManyToMany(fetch = FetchType.EAGER)
-    List<Ator> atores;
+    List<Ator> atores = new ArrayList<>();
     @ManyToOne
     Diretor diretor;
     @ManyToOne
@@ -46,15 +47,16 @@ public class Titulo implements Serializable {
 
 
     public Titulo() {
+      this.atores   = new ArrayList<>();
     }
 
-    public Titulo(Long idTitulo, String nome, int ano, String sinopse, String categoria, List<Ator> atores, Diretor diretor, Classe classe) {
+    public Titulo(Long idTitulo, String nome, int ano, String sinopse, String categoria,List<Ator> atores, Diretor diretor, Classe classe) {
         this.idTitulo = idTitulo;
         this.nome = nome;
         this.ano = ano;
         this.sinopse = sinopse;
         this.categoria = categoria;
-        this.atores = atores;
+        this.atores =  new ArrayList<>();
         this.diretor = diretor;
         this.classe = classe;
     }
@@ -64,11 +66,12 @@ public class Titulo implements Serializable {
         this.ano = ano;
         this.sinopse = sinopse;
         this.categoria = categoria;
-        this.atores = atores;
+        this.atores =  new ArrayList<>();
         this.diretor = diretor;
         this.classe = classe;
     }
 
+  
     public Long getID() {
         return idTitulo;
     }
@@ -116,6 +119,8 @@ public class Titulo implements Serializable {
     public void setAtores(List<Ator> atores) {
         this.atores = atores;
     }
+
+  
 
     public Diretor getDiretor() {
         return diretor;
