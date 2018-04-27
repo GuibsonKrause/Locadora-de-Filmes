@@ -29,7 +29,7 @@ public class Item implements Serializable {
     private Long IdSerie;
     private String numSerie;
  
-    @Temporal(javax.persistence.TemporalType.DATE)
+
     private Calendar dtAquisicao;
 
     

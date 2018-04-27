@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 
 @Entity
-abstract class Cliente implements Serializable {
+public abstract class Cliente implements Serializable {
 
     @Id
     @GeneratedValue

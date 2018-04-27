@@ -50,6 +50,9 @@ public class ctrCadastrarTitulo extends HttpServlet {
         String operacao = request.getParameter("operacao");
         String nome = request.getParameter("nome");
         String[] idAtores = request.getParameterValues("atores");
+
+        System.out.println("----" + idAtores.length);
+
         long idDiretor = Long.parseLong(request.getParameter("diretores"));
         int ano = Integer.parseInt(request.getParameter("ano"));
         String sinopse = request.getParameter("sinopse");
@@ -73,13 +76,23 @@ public class ctrCadastrarTitulo extends HttpServlet {
                 Criteria criteria = null;
                 Iterator iterator = null;
 
- //               Ator
+                //               Ator
+                criteria = session.createCriteria(Ator.class);
 
+                List atrs = criteria.list();
+                iterator = atrs.iterator();
 
-                Ator idAtor = new Ator();
-                for (String idAtore : idAtores) {
-                    idAtor.setID(Long.parseLong(idAtore));
-                    atores.add(idAtor);
+                Ator ator;
+                long idAtor;
+              
+                while (iterator.hasNext()) {
+                    Ator a = (Ator) iterator.next();
+                    idAtor = a.getID();
+
+                    if (comparaAtor(idAtor, idAtores) == 1) {
+                        atores.add(a);
+                    }
+
                 }
 
                 //diretor
@@ -104,18 +117,17 @@ public class ctrCadastrarTitulo extends HttpServlet {
                     classe = cl;
                 }
 
-                /*=======INSERE===============================================================================================*/
+                //insere
                 ret = AplCadastrarTitulo.inserirTitulo(nome, atores, diretor, ano, sinopse, categoria, classe);
 
                 if (ret == 0) {
-                    //  mensagem = "sucesso_cadastrar";
-                    //response.sendRedirect("Ator/CadastrarAtor.jsp?msg=" + mensagem);
+
                 }
                 if (ret == 1) {
-                    //  response.sendRedirect("sucesso.html");
+
                 }
                 if (ret == 2) {
-                    //response.sendRedirect("erro.html");
+
                 }
 
                 break;
@@ -161,4 +173,18 @@ public class ctrCadastrarTitulo extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    private int comparaAtor(long id, String[] idAtores) {
+
+        int i = 0;
+        long idComp;
+
+        while (i < idAtores.length) {
+            idComp = Long.parseLong(idAtores[i]);
+            if (id == idComp) {
+                return 1;
+            }
+            i++;
+        }
+        return 0;
+    }
 }

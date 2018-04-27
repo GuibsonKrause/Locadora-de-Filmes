@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+  * To change this license header, choose License Headers in Project Properties.
+  * To change this template file, choose Tools | Templates
+  * and open the template in the editor.
  */
 package model.aplication;
 
@@ -9,13 +9,11 @@ import DAO.ConexaoHibernate;
 import java.util.Calendar;
 import model.domain.Dependente;
 import model.domain.Socio;
-import org.hibernate.Criteria;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -47,7 +45,7 @@ public class AplCadastrarCliente {
         }
     }
 
-    public static int inserirDependente(Socio socio, String nome,  Calendar data_nascimento, String sexo) throws ClassNotFoundException {
+    public static int inserirDependente(Socio socio, String nome, Calendar data_nascimento, String sexo) throws ClassNotFoundException {
 
         Session session = null;
         Transaction t = null;
@@ -96,6 +94,7 @@ public class AplCadastrarCliente {
         }
 
     }
+
     public static int excluirDependente(long id) {
         Dependente d = new Dependente();
         d.setNum_inscricao(id);
@@ -121,5 +120,7 @@ public class AplCadastrarCliente {
         }
 
     }
+
    
+
 }

@@ -65,15 +65,10 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="atores"></label>
                                 <div class="col-md-4">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th style="text-align: center">Nº</th>
-                                                <th style="text-align: center">Nome do Ator</th>
-                                                <th style="text-align: center">Selecione</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                                    
+                                     <select multiple class="form-control"  name="atores">
+                                    
+                                 
                                             <%
                                                 SessionFactory sf = ConexaoHibernate.getSessionFactory();
                                                 Session s = sf.openSession();
@@ -86,24 +81,22 @@
 
                                                 for (i = 0; i < atores.size(); i++) {
 
-                                                    out.println("<tr>");
-
-                                                    out.println("<td style='text-align: center'>" + ((Ator) atores.get(i)).getID() + "</td>");
-                                                    out.println("<td style='text-align: center'>" + ((Ator) atores.get(i)).getNome() + "</td>");
-                                                    out.println("<td style='text-align: center'>" + "<input type='checkbox' name='atores' value='" + ((Ator) atores.get(i)).getID() + "'>" + "</td>");
-
-                                                    out.println("</tr>");
-
+                                                 
+                                                    out.println("<option value='"+((Ator) atores.get(i)).getID()+"'>"+((Ator) atores.get(i)).getNome()+"</option>");
+                                                    
+                                           
                                                 }
 
                                             %>
 
-                                        </tbody>
-                                    </table>
+                                       <!-- </tbody>
+                                    </table -->
+                                    
+                                    </select>
+                                    
                                 </div>
                             </div>
-                            <br><br>
-                            <br><br>
+                          <br>
                             <br><br>
                             <br><br>
                             <div class="form-group">
@@ -116,14 +109,14 @@
                                             List diretores = c.list();
 
                                             Iterator in = diretores.iterator();
-                                            int pular = 0;
+                                          
                                             while (in.hasNext()) {
 
                                                 Diretor d = (Diretor) in.next();
                                                 out.println("<option value='" + d.getID() + "'>" + d.getNome() + "</opttion>");
-                                                pular++;
+                                                
                                             }
-                                            for(int br = 0; br < pular; br++){
+                                            for(int br = 0; br < i; br++){
                                                 out.println("<br><br>");
                                             }
 

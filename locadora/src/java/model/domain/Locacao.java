@@ -6,6 +6,7 @@
 package model.domain;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,52 +23,95 @@ public class Locacao implements Serializable {
 
     @Id
     @GeneratedValue
-    private Long ID;
+    private Long IdLocacao;
     
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dtLocacao;
+    private Calendar dtLocacao;
     
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dtDevolucaoPrevista;
+    private Calendar dtDevolucaoPrevista;
     
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dtDevolucaoEfetiva;
+    private Calendar dtDevolucaoEfetiva;
     
     private float valorCobrado;
     
     private float multaCobrada;
     @ManyToOne
     private Item item;
-    //@ManyToOne
-    private Cliente cliente;
+    @ManyToOne
+     Cliente cliente;
 
     public Locacao() {
     }
-    
-    
 
-    public Locacao(Long ID, Date dtLocacao, Date dtDevolucaoPrevista, Date dtDevolucaoEfetiva, float valorCobrado, float multaCobrada, Item item, Cliente cliente) {
-        this.ID = ID;
-        this.dtLocacao = dtLocacao;
-        this.dtDevolucaoPrevista = dtDevolucaoPrevista;
-        this.dtDevolucaoEfetiva = dtDevolucaoEfetiva;
-        this.valorCobrado = valorCobrado;
-        this.multaCobrada = multaCobrada;
-        this.item = item;
-        this.cliente = cliente;
+    public Long getIdLocacao() {
+        return IdLocacao;
     }
 
-    public Locacao(Date dtLocacao, Date dtDevolucaoPrevista, Date dtDevolucaoEfetiva, float valorCobrado, float multaCobrada, Item item, Cliente cliente) {
+    public void setIdLocacao(Long IdLocacao) {
+        this.IdLocacao = IdLocacao;
+    }
+
+    public Calendar getDtLocacao() {
+        return dtLocacao;
+    }
+
+    public void setDtLocacao(Calendar dtLocacao) {
         this.dtLocacao = dtLocacao;
+    }
+
+    public Calendar getDtDevolucaoPrevista() {
+        return dtDevolucaoPrevista;
+    }
+
+    public void setDtDevolucaoPrevista(Calendar dtDevolucaoPrevista) {
         this.dtDevolucaoPrevista = dtDevolucaoPrevista;
+    }
+
+    public Calendar getDtDevolucaoEfetiva() {
+        return dtDevolucaoEfetiva;
+    }
+
+    public void setDtDevolucaoEfetiva(Calendar dtDevolucaoEfetiva) {
         this.dtDevolucaoEfetiva = dtDevolucaoEfetiva;
+    }
+
+    public float getValorCobrado() {
+        return valorCobrado;
+    }
+
+    public void setValorCobrado(float valorCobrado) {
         this.valorCobrado = valorCobrado;
+    }
+
+    public float getMultaCobrada() {
+        return multaCobrada;
+    }
+
+    public void setMultaCobrada(float multaCobrada) {
         this.multaCobrada = multaCobrada;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
         this.item = item;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+    
+    
 
   
-    
+  
     
 }

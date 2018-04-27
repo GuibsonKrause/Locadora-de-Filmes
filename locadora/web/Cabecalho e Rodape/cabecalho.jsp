@@ -62,7 +62,7 @@
 
                                         <div class="dropdown-content">
                                             <a href="../Locacao/Nova_Locação.jsp">Efetuar Locação</a>
-                                            <a href="../Devolucao/Devolucao.jsp">Efetuar Devolucao</a>
+                                            <a href="../Devolucao/Devolucao.jsp">Efetuar Devolucão</a>
                                         </div>
                                       
 

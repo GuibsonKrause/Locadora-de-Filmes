@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+  * To change this license header, choose License Headers in Project Properties.
+  * To change this template file, choose Tools | Templates
+  * and open the template in the editor.
  */
 package model.domain;
 
@@ -47,8 +47,8 @@ public class Socio extends Cliente implements Serializable {
         this.dependentes = new ArrayList<>();
         this.cpf = cpf;
         this.endereco = endereco;
-        this.telefone = telefone;
     }
+
     public String getCpf() {
         return cpf;
     }

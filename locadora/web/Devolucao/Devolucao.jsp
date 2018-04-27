@@ -4,6 +4,13 @@
     Author     : 2016122760198
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="org.hibernate.Criteria"%>
+<%@page import="DAO.ConexaoHibernate"%>
+<%@page import="org.hibernate.SessionFactory"%>
+<%@page import="org.hibernate.SessionFactory"%>
+<%@page import="org.hibernate.Session"%>
+<%@page import="model.domain.Locacao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -46,68 +53,83 @@
                     <br></br>
 
                     <!-- Text input-->
-                    <form id="form" action="../ctrCadastrarDevolucao" method="POST">
-                        <input class="hidden" name="operacao" value="inserir">
+                    <form id="form" action="../ctrCadastrarLocacao" method="POST">
+                        <input class="hidden" name="operacao" value="inserirDev">
 
                         <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="Nome">Número de Série</label>  
+                            <label class="col-md-4 control-label" for="item"></label>
                             <div class="col-md-4">
-                                <input id="" name="Nome" type="txt" placeholder="Número de Série" class="form-control input-md" required="">
+
+                                <select class="form-control"  name="locacaoItem">
+
+
+                                    <%
+                                        SessionFactory sf = ConexaoHibernate.getSessionFactory();
+                                        Session s = sf.openSession();
+                                        Criteria c;
+
+                                        c = s.createCriteria(Locacao.class);
+
+                                        List loca = c.list();
+                                        int a;
+
+                                        for (a = 0; a < loca.size(); a++) {
+
+                                            out.println("<option value='" + ((Locacao) loca.get(a)).getID() + "'>" + ((Locacao) loca.get(a)).getItem().getNumSerie() + "</option>");
+
+                                        }
+
+                                    %>
+
+                                    <!-- </tbody>
+                                 </table -->
+
+                                </select>
 
                             </div>
                         </div>
 
+                                    <br><br>
+
+                        <!-- Button (Double) -->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="dinheiro"></label>
-                            <div class="col-md-4">
-                                <div class="input-group">
-                                    <span class="input-group-addon">R$</span>
-                                    <input id="dinero" name="dinheiro" class="form-control" placeholder="Valor da Multa" type="text" required="">
+                            <label class="col-md-5 control-label" for=""></label>
+                            <div class="col-md-5">
+
+                                <div class="ficon">
+                                    <button type="submit" class="btn btn-default"  >Cadastrar</button>
+                                    <button href="../Admin/Admin.html" class="btn btn-default" >Cancelar</button>
+
                                 </div>
-                            </div>
-
-
-
-                            <br>
-
-                            <!-- Button (Double) -->
-                            <div class="form-group">
-                                <label class="col-md-5 control-label" for=""></label>
-                                <div class="col-md-5">
-
-                                    <div class="ficon">
-                                        <button type="submit" class="btn btn-default"  >Cadastrar</button>
-                                        <button href="../Admin/Admin.html" class="btn btn-default" >Cancelar</button>
-
-                                    </div>
-                                    <br></br> <br></br>
-                                </div>
+                                <br></br> <br></br>
                             </div>
                         </div>
+
                     </form>
                 </fieldset>
             </div>
+        </div>
 
-            <jsp:include page="../Cabecalho e Rodape/rodape.jsp"/>
+        <jsp:include page="../Cabecalho e Rodape/rodape.jsp"/>
 
 
 
-            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->	
-            <script src="js/jquery-2.1.1.min.js"></script>	
-            <!-- Include all compiled plugins (below), or include individual files as needed -->
-            <script src="js/bootstrap.min.js"></script>
-            <script src="js/wow.min.js"></script>
-            <script src="js/fancybox/jquery.fancybox.pack.js"></script>
-            <script src="js/jquery.easing.1.3.js"></script>
-            <script src="js/jquery.bxslider.min.js"></script>
-            <script src="js/functions.js"></script>
-            <script>
-                wow = new WOW(
-                        {
-                        })
-                        .init();
-            </script>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->	
+        <script src="js/jquery-2.1.1.min.js"></script>	
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/wow.min.js"></script>
+        <script src="js/fancybox/jquery.fancybox.pack.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <script src="js/jquery.bxslider.min.js"></script>
+        <script src="js/functions.js"></script>
+        <script>
+            wow = new WOW(
+                    {
+                    })
+                    .init();
+        </script>
 
     </body>
 </html>

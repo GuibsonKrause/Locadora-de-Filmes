@@ -39,7 +39,7 @@ public class Titulo implements Serializable {
     private String categoria;
 
    @ManyToMany(fetch = FetchType.EAGER)
-    List<Ator> atores = new ArrayList<>();
+    private List<Ator> atores = new ArrayList<>();
     @ManyToOne
     Diretor diretor;
     @ManyToOne
@@ -56,7 +56,7 @@ public class Titulo implements Serializable {
         this.ano = ano;
         this.sinopse = sinopse;
         this.categoria = categoria;
-        this.atores =  new ArrayList<>();
+        this.atores =  atores;
         this.diretor = diretor;
         this.classe = classe;
     }
@@ -66,7 +66,7 @@ public class Titulo implements Serializable {
         this.ano = ano;
         this.sinopse = sinopse;
         this.categoria = categoria;
-        this.atores =  new ArrayList<>();
+        this.atores =  atores;
         this.diretor = diretor;
         this.classe = classe;
     }
