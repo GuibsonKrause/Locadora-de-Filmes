@@ -45,11 +45,11 @@ public class Locacao implements Serializable {
     public Locacao() {
     }
 
-    public Long getIdLocacao() {
+    public Long getID() {
         return IdLocacao;
     }
 
-    public void setIdLocacao(Long IdLocacao) {
+    public void setID(Long IdLocacao) {
         this.IdLocacao = IdLocacao;
     }
 
