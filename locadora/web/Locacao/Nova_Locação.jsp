@@ -102,7 +102,8 @@
                                 <select class="form-control"  name="item">
 
 
-                                    <%                                        c = s.createCriteria(Item.class);
+                                    <%                                        
+                                        c = s.createCriteria(Item.class);
 
                                         List item = c.list();
                                         int a;

@@ -82,18 +82,6 @@ public class ctrCadastrarLocacao extends HttpServlet {
                     Logger.getLogger(ctrCadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-                Item item = null;
-                session.createCriteria(Item.class);
-                criteria.add(Restrictions.eq("IdSerie", idItem));
-                List it = criteria.list();
-                iterator = it.iterator();
-
-                while (iterator.hasNext()) {
-                    Item itm = (Item) iterator.next();
-
-                    item = itm;
-                }
-
                 Cliente cliente = null;
 
                 criteria = session.createCriteria(Cliente.class);
@@ -106,8 +94,20 @@ public class ctrCadastrarLocacao extends HttpServlet {
 
                     cliente = clie;
                 }
+                Item item = null;
+                criteria = session.createCriteria(Item.class);
+                criteria.add(Restrictions.eq("IdSerie", idItem));
+                List its = criteria.list();
+                iterator = its.iterator();
+
+                while (iterator.hasNext()) {
+                    Item itm = (Item) iterator.next();
+
+                    item = itm;
+                }
 
                 try {
+                    System.out.println("- --------------       entrou        -------------");
                     ret = AplCadastrarLocacao.inserirLocacao(cliente, Calendar.getInstance(), dataPrev, valor, item);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(ctrCadastrarItem.class.getName()).log(Level.SEVERE, null, ex);
