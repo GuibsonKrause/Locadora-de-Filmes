@@ -48,27 +48,27 @@ public class ctrCadastrarTitulo extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String operacao = request.getParameter("operacao");
-        String nome = request.getParameter("nome");
-        String[] idAtores = request.getParameterValues("atores");
-
-        System.out.println("----" + idAtores.length);
-
-        long idDiretor = Long.parseLong(request.getParameter("diretores"));
-        int ano = Integer.parseInt(request.getParameter("ano"));
-        String sinopse = request.getParameter("sinopse");
-        String categoria = request.getParameter("categoria");
-        long idClasse = Long.parseLong(request.getParameter("classes"));
-
-        int ret;
-
-        List<Ator> atores = new ArrayList();
-
-        Diretor diretor = null;
-        Classe classe = null;
 
         switch (operacao) {
 
             case "inserir":
+                String nome = request.getParameter("nome");
+                String[] idAtores = request.getParameterValues("atores");
+
+                System.out.println("----" + idAtores.length);
+
+                long idDiretor = Long.parseLong(request.getParameter("diretores"));
+                int ano = Integer.parseInt(request.getParameter("ano"));
+                String sinopse = request.getParameter("sinopse");
+                String categoria = request.getParameter("categoria");
+                long idClasse = Long.parseLong(request.getParameter("classes"));
+
+                int ret;
+
+                List<Ator> atores = new ArrayList();
+
+                Diretor diretor = null;
+                Classe classe = null;
 
                 Session session = null;
                 SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
@@ -84,7 +84,7 @@ public class ctrCadastrarTitulo extends HttpServlet {
 
                 Ator ator;
                 long idAtor;
-              
+
                 while (iterator.hasNext()) {
                     Ator a = (Ator) iterator.next();
                     idAtor = a.getID();

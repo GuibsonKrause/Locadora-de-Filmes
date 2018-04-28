@@ -48,7 +48,7 @@ public class AplCadastrarItem {
         }
     }
 
-    public static int excluirClasse(long id) {
+     public static int excluirItem(long id) {
         Item i = new Item();
         i.setID(id);
 
@@ -56,10 +56,10 @@ public class AplCadastrarItem {
         Session session = null;
 
         try {
-            SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
+           SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
             session = sessionFac.openSession();
             t = session.beginTransaction();
-
+            
             session.delete(i);
             t.commit();
 

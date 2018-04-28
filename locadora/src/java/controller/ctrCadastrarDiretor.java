@@ -39,12 +39,12 @@ public class ctrCadastrarDiretor extends HttpServlet {
 
         String mensagem;
         String operacao = request.getParameter("operacao");
-        String name = request.getParameter("nome");
 
         int ret;
         long id;
         switch (operacao) {
             case "inserir":
+                String name = request.getParameter("nome");
 
                 try {
 
@@ -123,4 +123,3 @@ public class ctrCadastrarDiretor extends HttpServlet {
     }// </editor-fold>
 
 }
-

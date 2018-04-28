@@ -4,6 +4,12 @@
     Author     : 2016122760198
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="model.domain.Diretor"%>
+<%@page import="org.hibernate.Criteria"%>
+<%@page import="org.hibernate.Session"%>
+<%@page import="DAO.ConexaoHibernate"%>
+<%@page import="org.hibernate.SessionFactory"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +29,7 @@
         <link href="../css/style.css" rel="stylesheet">
         <link href="../css/dropdown.css" rel="stylesheet" type="text/css"/>
 
-   
+
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Add icon library -->
@@ -44,80 +50,80 @@
                 background-color: #ED502E;
             }
         </style>
- <jsp:include page="../Cabecalho e Rodape/cabecalho.jsp"/>        
+        <jsp:include page="../Cabecalho e Rodape/cabecalho.jsp"/>        
 
-        <div class="container-fluid">
-            <div class="row">
-                <form class="form-horizontal">
-                    <fieldset>
+    <div class="container-fluid">
+        <div class="row">
+            <fieldset>
+                <form id="form" action="../ctrCadastrarDiretor" method="POST">
+                    <input class="hidden" name="operacao" value="excluir">
 
-                        <br></br>
-                        <!-- Form Name -->
-                        <h2 style="text-align: center;">Alterar/Excluir Diretor</h2>
-                        <br></br>
+                    <br></br>
+                    <!-- Form Name -->
+                    <h2 style="text-align: center;">Alterar/Excluir Diretor</h2>
+                    <br></br>
 
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for=""></label>
+                        <div class="col-md-4">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nº</th>
+                                        <th>Nome do Diretor</th>
+                                        <th>Alterar</th>
+                                        <th>Excluir</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
+                                    <%
+                                        SessionFactory sf = ConexaoHibernate.getSessionFactory();
+                                        Session s = sf.openSession();
+                                        Criteria c = s.createCriteria(Diretor.class);
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="Diretor">Diretores</label>
-                            <div class="col-md-4">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Nº</th>
-                                            <th>Nome do Diretor</th>
-                                            <th>Alterar</th>
-                                            <th>Excluir</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Diretor</td>
-                                             <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Diretor</td>
-                                              <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Diretor</td>
-                                            <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                                        List diretores = c.list();
+                                        int i;
+
+                                        for (i = 0; i < diretores.size(); i++)
+                                        {
+                                            out.println("<tr>");
+                                            out.println("<td>" + ((Diretor) diretores.get(i)).getID() + "</td>");
+                                            out.println("<td>" + ((Diretor) diretores.get(i)).getNome() + "</td>");
+                                            out.println("<td>" + "<button type='submit' class='btnTable'><i class='fa fa-pencil'></i></button>" + "</td>");
+                                            out.println("<td>" + "<button type='submit' name= 'id' value = '" + ((Diretor) diretores.get(i)).getID() + "' class='btnTable'><i class='fa fa-trash-o'></i></button>" + "</td>");
+                                            out.println("</tr>");
+                                        }
+                                    %>
+
+                                </tbody>
+                            </table>
                         </div>
-
-                    </fieldset>
+                    </div>
                 </form>
-            </div>
-            <br></br>
+            </fieldset>
         </div>
- <jsp:include page="../Cabecalho e Rodape/rodape.jsp"/>
+        <br></br>
+    </div>
+    <jsp:include page="../Cabecalho e Rodape/rodape.jsp"/>
 
 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->	
-        <script src="js/jquery-2.1.1.min.js"></script>	
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/wow.min.js"></script>
-        <script src="js/fancybox/jquery.fancybox.pack.js"></script>
-        <script src="js/jquery.easing.1.3.js"></script>
-        <script src="js/jquery.bxslider.min.js"></script>
-        <script src="js/functions.js"></script>
-        <script>
-            wow = new WOW(
-                    {
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->	
+    <script src="js/jquery-2.1.1.min.js"></script>	
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/fancybox/jquery.fancybox.pack.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.bxslider.min.js"></script>
+    <script src="js/functions.js"></script>
+    <script>
+        wow = new WOW(
+                {
 
-                    })
-                    .init();
-        </script>
+                })
+                .init();
+    </script>
 
-    </body>
+</body>
 </html>

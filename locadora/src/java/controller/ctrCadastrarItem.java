@@ -53,55 +53,49 @@ public class ctrCadastrarItem extends HttpServlet {
         String mensagem;
         String operacao = request.getParameter("operacao");
 
-        long idTitulo = Long.parseLong(request.getParameter("titulos"));
-      
-        String tipo = request.getParameter("tipo");
-        String numero = (request.getParameter("numero"));
-
-        String date = (request.getParameter("data"));
-        String nascimento = request.getParameter("dataDeNascimento");
-        Calendar dataC = null;
-
-        Date dataD;
-        try {
-            dataD = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-            dataC = Calendar.getInstance();
-            dataC.setTime(dataD);
-        } catch (ParseException ex) {
-            Logger.getLogger(ctrCadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        
-
-        Titulo titulo = null;
-        Session session = null;
-        SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
-        session = sessionFac.openSession();
-        Criteria criteria = session.createCriteria(Titulo.class);
-        criteria.add(Restrictions.eq("idTitulo", idTitulo));
-        List drs = criteria.list();
-        Iterator iterator = drs.iterator();
-
-        while (iterator.hasNext()) {
-            Titulo ti = (Titulo) iterator.next();
-
-            titulo = ti;
-        }
-
-        
-
         int ret = 0;
 
         switch (operacao) {
             case "inserir": {
 
-                
-            try {
-                ret = AplCadastrarItem.inserirItem(numero, dataC, tipo, titulo);
-            } catch (ClassNotFoundException | ParseException ex) {
-                Logger.getLogger(ctrCadastrarItem.class.getName()).log(Level.SEVERE, null, ex);
-            }
-               
+                long idTitulo = Long.parseLong(request.getParameter("titulos"));
+
+                String tipo = request.getParameter("tipo");
+                String numero = (request.getParameter("numero"));
+
+                String date = (request.getParameter("data"));
+                String nascimento = request.getParameter("dataDeNascimento");
+                Calendar dataC = null;
+
+                Date dataD;
+                try {
+                    dataD = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+                    dataC = Calendar.getInstance();
+                    dataC.setTime(dataD);
+                } catch (ParseException ex) {
+                    Logger.getLogger(ctrCadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                Titulo titulo = null;
+                Session session = null;
+                SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
+                session = sessionFac.openSession();
+                Criteria criteria = session.createCriteria(Titulo.class);
+                criteria.add(Restrictions.eq("idTitulo", idTitulo));
+                List drs = criteria.list();
+                Iterator iterator = drs.iterator();
+
+                while (iterator.hasNext()) {
+                    Titulo ti = (Titulo) iterator.next();
+
+                    titulo = ti;
+                }
+
+                try {
+                    ret = AplCadastrarItem.inserirItem(numero, dataC, tipo, titulo);
+                } catch (ClassNotFoundException | ParseException ex) {
+                    Logger.getLogger(ctrCadastrarItem.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
                 if (ret == 0) {
                     //  mensagem = "sucesso_cadastrar";
@@ -118,7 +112,7 @@ public class ctrCadastrarItem extends HttpServlet {
             case "excluir":
                 long id;
                 id = Long.parseLong(request.getParameter("id"));
-                ret = AplCadastrarClasse.excluirClasse(id);
+                ret = AplCadastrarItem.excluirItem(id);
                 if (ret == 0) {
                     //  mensagem = "sucesso_cadastrar";
                     //response.sendRedirect("Ator/CadastrarAtor.jsp?msg=" + mensagem);

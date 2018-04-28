@@ -40,34 +40,32 @@ public class ctrCadastrarClasse extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String mensagem;
         String operacao = request.getParameter("operacao");
-        String nome = request.getParameter("nome");
-        float valor = Float.parseFloat(request.getParameter("valor"));
 
-        String date =(request.getParameter("data"));
-        
-        Calendar data = null;
-        
-      
-            Date dataT;
-        try {
-            dataT = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-            data = Calendar.getInstance();
-            data.setTime(dataT);
-        } catch (ParseException ex) {
-            Logger.getLogger(ctrCadastrarClasse.class.getName()).log(Level.SEVERE, null, ex);
-        }
-           
-             
         int ret = 0;
         long id;
         switch (operacao) {
-            case "inserir":  {
+            case "inserir": {
+                String nome = request.getParameter("nome");
+                float valor = Float.parseFloat(request.getParameter("valor"));
 
-            try {
-                ret = AplCadastrarClasse.inserirClasse(nome, data ,valor);
-            } catch (ParseException ex) {
-                Logger.getLogger(ctrCadastrarClasse.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                String date = (request.getParameter("data"));
+
+                Calendar data = null;
+
+                Date dataT;
+                try {
+                    dataT = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+                    data = Calendar.getInstance();
+                    data.setTime(dataT);
+                } catch (ParseException ex) {
+                    Logger.getLogger(ctrCadastrarClasse.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                try {
+                    ret = AplCadastrarClasse.inserirClasse(nome, data, valor);
+                } catch (ParseException ex) {
+                    Logger.getLogger(ctrCadastrarClasse.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
                 if (ret == 0) {
                     //  mensagem = "sucesso_cadastrar";
@@ -113,13 +111,11 @@ public class ctrCadastrarClasse extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException {
 
-        
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ctrCadastrarClasse.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
 
     }
 
@@ -135,13 +131,11 @@ public class ctrCadastrarClasse extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException {
 
-        
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ctrCadastrarClasse.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
 
     }
 

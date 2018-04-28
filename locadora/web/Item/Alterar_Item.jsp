@@ -4,6 +4,13 @@
     Author     : 2016122760198
 --%>
 
+<%@page import="DAO.ConexaoHibernate"%>
+<%@page import="org.hibernate.SessionFactory"%>
+<%@page import="org.hibernate.Session"%>
+<%@page import="org.hibernate.Criteria"%>
+<%@page import="java.util.List"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="model.domain.Item"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,23 +52,23 @@
 
     </head>
     <body>
-         <jsp:include page="../Cabecalho e Rodape/cabecalho.jsp"/>
+        <jsp:include page="../Cabecalho e Rodape/cabecalho.jsp"/>
 
 
         <div class="container-fluid">
             <div class="row">
-                <form class="form-horizontal">
-                    <fieldset>
+                <fieldset>
+
+                    <form id="form" action="../ctrCadastrarItem" method="POST">
+                        <input class="hidden" name="operacao" value="excluir">
 
                         <br></br>
                         <!-- Form Name -->
                         <h2 style="text-align: center;">Alterar/Excluir Item</h2>
                         <br></br>
 
-
-
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="Item">Item</label>
+                            <label class="col-md-4 control-label" for=""></label>
                             <div class="col-md-4">
                                 <table class="table table-striped">
                                     <thead>
@@ -76,47 +83,41 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Numero 1</td>
-                                            <td>Título 1</td>
-                                            <td>Data 1</td>
-                                            <td>Tipo 1</td>
-                                            <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Numero 2</td>
-                                            <td>Título 2</td>
-                                            <td>Data 2</td>
-                                            <td>Tipo 2</td>
-                                            <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Numero 3</td>
-                                            <td>Título 3</td>
-                                            <td>Data 3</td>
-                                            <td>Tipo 3</td>
-                                            <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
+                                        <%
+                                            SessionFactory sf = ConexaoHibernate.getSessionFactory();
+                                            Session s = sf.openSession();
+                                            Criteria c = s.createCriteria(Item.class);
+
+                                            List itens = c.list();
+                                            int i;
+                                            String strdate = null;
+                                            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+                                            for (i = 0; i < itens.size(); i++)
+                                            {
+                                                strdate = sdf.format(((Item) itens.get(i)).getDtAquisicao().getTime()); // Convert Calendar to string
+                                                out.println("<tr>");
+                                                out.println("<td>" + ((Item) itens.get(i)).getID() + "</td>");
+                                                out.println("<td>" + ((Item) itens.get(i)).getNumSerie() + "</td>");
+                                                out.println("<td>" + ((Item) itens.get(i)).getTitulo().getNome() + "</td>");
+                                                out.println("<td>" + strdate + "</td>");
+                                                out.println("<td>" + ((Item) itens.get(i)).getTipoItem() + "</td>");
+                                                out.println("<td>" + "<button type='submit' class='btnTable'><i class='fa fa-pencil'></i></button>" + "</td>");
+                                                out.println("<td>" + "<button type='submit' name= 'id' value = '" + ((Item) itens.get(i)).getID() + "' class='btnTable'><i class='fa fa-trash-o'></i></button>" + "</td>");
+                                                out.println("</tr>");
+                                            }
+                                        %>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-
-
-                     
-                    </fieldset>
-                </form>
+                    </form>                   
+                </fieldset>
             </div>
             <br></br>
         </div>
 
-         <jsp:include page="../Cabecalho e Rodape/rodape.jsp"/>
+        <jsp:include page="../Cabecalho e Rodape/rodape.jsp"/>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->	
         <script src="js/jquery-2.1.1.min.js"></script>	

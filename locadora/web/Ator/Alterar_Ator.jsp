@@ -72,7 +72,7 @@
                         <br></br>
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="Diretor">Ator</label>
+                            <label class="col-md-4 control-label" for=""></label>
                             <div class="col-md-4">
                                 <table class="table table-striped">
                                     <thead>
@@ -85,7 +85,6 @@
                                     </thead>
                                     <tbody>
 
-
                                         <%
                                             SessionFactory sf = ConexaoHibernate.getSessionFactory();
                                             Session s = sf.openSession();
@@ -94,25 +93,16 @@
                                             List atores = c.list();
                                             int i;
 
-                                            for (i = 0; i < atores.size(); i++) {
-
+                                            for (i = 0; i < atores.size(); i++)
+                                            {
                                                 out.println("<tr>");
-
                                                 out.println("<td>" + ((Ator) atores.get(i)).getID() + "</td>");
                                                 out.println("<td>" + ((Ator) atores.get(i)).getNome() + "</td>");
-                                                out.println("<td>" + "<button class='btnTable'><i class='fa fa-pencil'></i></button>" + "</td>");
-                                                out.println("<td>" + "<button class='btnTable'><i class='fa fa-trash-o'></i></button>" + "</td>");
-
+                                                out.println("<td>" + "<button type='submit' class='btnTable'><i class='fa fa-pencil'></i></button>" + "</td>");
+                                                out.println("<td>" + "<button type='submit' name= 'id' value = '" + ((Ator) atores.get(i)).getID() + "' class='btnTable'><i class='fa fa-trash-o'></i></button>" + "</td>");
                                                 out.println("</tr>");
                                             }
                                         %>
-
-
-
-
-
-
-
                                     </tbody>
                                 </table>
                             </div>

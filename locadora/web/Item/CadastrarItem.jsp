@@ -53,7 +53,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
 
-                                    <input id="numero" name="numero" class="form-control" placeholder="Número" type="number" required="">
+                                    <input id="numero" name="numero" class="form-control"  class="form-control"placeholder="Número" type="number" required="">
                                 </div>
                             </div>
                             <br><br>

@@ -40,13 +40,13 @@ public class ctrCadastrarAtor extends HttpServlet {
 
         String mensagem;
         String operacao = request.getParameter("operacao");
-        String nome = request.getParameter("nome");
 
-        int ret;
-        long id;
         switch (operacao) {
             case "inserir":
+                String nome = request.getParameter("nome");
 
+                int ret;
+                long id;
                 try {
 
                     ret = AplCadastrarAtor.inserirAtor(nome);
@@ -66,7 +66,6 @@ public class ctrCadastrarAtor extends HttpServlet {
 
                 break;
             case "excluir":
-
                 id = Long.parseLong(request.getParameter("id"));
                 ret = AplCadastrarAtor.excluirAtor(id);
                 if (ret == 0) {
@@ -82,18 +81,6 @@ public class ctrCadastrarAtor extends HttpServlet {
 
                 break;
         }
-//        try (PrintWriter out = response.getWriter()) {
-//            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet ctrCadastrarAtor</title>");
-//            out.println("nome  ");
-//            out.println("<body>");
-//            out.println("<h1>Servlet ctrCadastrarAtor at " + request.getContextPath() + "</h1>");
-//            out.println("</body>");
-//            out.println("</html>");
-//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

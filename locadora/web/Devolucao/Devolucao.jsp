@@ -75,9 +75,9 @@
                                         int a;
 
                                         for (a = 0; a < loca.size(); a++) {
-
-                                            out.println("<option value='" + ((Locacao) loca.get(a)).getID() + "'>" + ((Locacao) loca.get(a)).getItem().getNumSerie() + "</option>");
-
+                                            if (((Locacao) loca.get(a)).getDtDevolucaoEfetiva() == null) {
+                                                out.println("<option value='" + ((Locacao) loca.get(a)).getID() + "'>" + ((Locacao) loca.get(a)).getItem().getNumSerie() + "</option>");
+                                            }
                                         }
 
                                     %>
@@ -90,7 +90,7 @@
                             </div>
                         </div>
 
-                                    <br><br>
+                        <br><br>
 
                         <!-- Button (Double) -->
                         <div class="form-group">

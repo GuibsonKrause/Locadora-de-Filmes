@@ -7,13 +7,17 @@ package model.aplication;
 
 import DAO.ConexaoHibernate;
 import java.util.Calendar;
+import java.util.List;
+import model.domain.Cliente;
 import model.domain.Dependente;
 import model.domain.Socio;
+import org.hibernate.Criteria;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -69,58 +73,111 @@ public class AplCadastrarCliente {
         }
     }
 
-    public static int excluirSocio(long id) {
-        Socio s = new Socio();
-        s.setNum_inscricao(id);
 
-        Transaction t = null;
+     public static int excluirCliente(long id)
+    {
         Session session = null;
+        List<Cliente> lista = null;
+        Transaction t = null;
 
-        try {
+        try
+        {
             SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
             session = sessionFac.openSession();
             t = session.beginTransaction();
 
-            session.delete(s);
-            t.commit();
+            Criteria criteria = session.createCriteria(Cliente.class);
+            criteria.add(Restrictions.eq("numInscricao", String.valueOf(id)));
+            lista = criteria.list();
 
+            if (lista.get(0) instanceof Dependente)
+            {
+                // Excluir Dependente
+                Dependente d = new Dependente();
+                d.setNum_inscricao(id);
+                session.delete(d);
+            } else // Socio
+            {
+                // Excluir Socio
+                Socio s = new Socio();
+                s.setNum_inscricao(id);
+                session.delete(s);
+            }
+            t.commit();
             return 1;
 
-        } catch (HibernateException e) {
+        } catch (HibernateException e)
+        {
             t.rollback();
             return 2;
-        } finally {
+        } finally
+        {
             session.close();
         }
 
+        // Fazer uma consulta por cliente no banco usando o id.
+        // Pegar o objeto retornado e comparar usando o instanceof
+        // Dependente ou Socio.
     }
 
-    public static int excluirDependente(long id) {
-        Dependente d = new Dependente();
-        d.setNum_inscricao(id);
-
-        Transaction t = null;
-        Session session = null;
-
-        try {
-            SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
-            session = sessionFac.openSession();
-            t = session.beginTransaction();
-
-            session.delete(d);
-            t.commit();
-
-            return 1;
-
-        } catch (HibernateException e) {
-            t.rollback();
-            return 2;
-        } finally {
-            session.close();
-        }
-
-    }
-
-   
+//    public static int excluirCliente(long id)
+//    {
+//        Socio c = new Socio();
+//        c.setNum_inscricao(id);
+//
+//        Transaction t = null;
+//        Session session = null;
+//
+//        try
+//        {
+//            SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
+//            session = sessionFac.openSession();
+//            t = session.beginTransaction();
+//
+//            session.delete(c);
+//            t.commit();
+//
+//            return 1;
+//
+//        } catch (HibernateException e)
+//        {
+//            t.rollback();
+//            return 2;
+//        } finally
+//        {
+//            session.close();
+//        }
+//
+//    }
+//
+//    public static int excluirCliente(long id)
+//    {
+//        Dependente d = new Dependente();
+//        d.setNum_inscricao(id);
+//
+//        Transaction t = null;
+//        Session session = null;
+//
+//        try
+//        {
+//            SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
+//            session = sessionFac.openSession();
+//            t = session.beginTransaction();
+//
+//            session.delete(d);
+//            t.commit();
+//
+//            return 1;
+//
+//        } catch (HibernateException e)
+//        {
+//            t.rollback();
+//            return 2;
+//        } finally
+//        {
+//            session.close();
+//        }
+//
+//    }
 
 }

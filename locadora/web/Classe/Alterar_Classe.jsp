@@ -4,6 +4,14 @@
     Author     : 2016122760198
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.List"%>
+<%@page import="model.domain.Classe"%>
+<%@page import="org.hibernate.Criteria"%>
+<%@page import="org.hibernate.Session"%>
+<%@page import="DAO.ConexaoHibernate"%>
+<%@page import="DAO.ConexaoHibernate"%>
+<%@page import="org.hibernate.SessionFactory"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,73 +53,68 @@
 
     </head>
 
-   <body>
+    <body>
         <jsp:include page="../Cabecalho e Rodape/cabecalho.jsp"/>
-        
+
         <div class="container-fluid">
             <div class="row">
-                <form class="form-horizontal">
-                    <fieldset>
+                <fieldset>
+
+                    <form id="form" action="../ctrCadastrarClasse" method="POST">
+                        <input class="hidden" name="operacao" value="excluir">
 
                         <br></br>
                         <!-- Form Name -->
                         <h2 style="text-align: center;">Alterar/Excluir Classe</h2>
                         <br></br>
 
-                 
-
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="Classe">Classe</label>
+                            <label class="col-md-4 control-label" for=""></label>
                             <div class="col-md-4">
                                 <table class="table table-striped">
                                     <thead>
-                                         <tr>
+                                        <tr>
                                             <th>Nº</th>
                                             <th>Nome</th>
                                             <th>Valor</th>
                                             <th>Data</th>
                                             <th>Alterar</th>
                                             <th>Excluir</th>
-                                           
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Nome</td>
-                                            <td>Valor</td>
-                                            <td>Data</td>
-                                             <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
-                                            
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Nome</td>
-                                            <td>Valor</td>
-                                            <td>Data</td>
-                                              <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Nome</td>
-                                            <td>Valor</td>
-                                            <td>Data</td>
-                                              <td><button class="btnTable"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button class="btnTable"><i class="fa fa-trash-o"></i></button></td>
-                                            
-                                        </tr>
-                                        
+                                        <%
+                                            SessionFactory sf = ConexaoHibernate.getSessionFactory();
+                                            Session s = sf.openSession();
+                                            Criteria c = s.createCriteria(Classe.class);
+
+                                            List classes = c.list();
+                                            int i;
+                                            String strdate = null;
+                                            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+                                            for (i = 0; i < classes.size(); i++)
+                                            {
+                                                strdate = sdf.format(((Classe) classes.get(i)).getPrazoDevolucao().getTime()); // Convert Calendar to string
+
+                                                out.println("<tr>");
+                                                out.println("<td>" + ((Classe) classes.get(i)).getID() + "</td>");
+                                                out.println("<td>" + ((Classe) classes.get(i)).getNome() + "</td>");
+                                                out.println("<td>" + ((Classe) classes.get(i)).getValor() + "</td>");
+                                                out.println("<td>" + strdate + "</td>");
+                                                out.println("<td>" + "<button type='submit' class='btnTable'><i class='fa fa-pencil'></i></button>" + "</td>");
+                                                out.println("<td>" + "<button type='submit' name= 'id' value = '" + ((Classe) classes.get(i)).getID() + "' class='btnTable'><i class='fa fa-trash-o'></i></button>" + "</td>");
+                                                out.println("</tr>");
+                                            }
+                                        %>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        
-                    </fieldset>
-                </form>
+                    </form>                   
+                </fieldset>
             </div>
-              <br></br>
+            <br></br>
         </div>
         <jsp:include page="../Cabecalho e Rodape/rodape.jsp"/>
 

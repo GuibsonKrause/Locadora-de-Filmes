@@ -42,27 +42,31 @@ public class AplCadastrarAtor {
         }
     }
 
-    public static int excluirAtor(long id) {
+   public static int excluirAtor(long id)
+    {
         Ator a = new Ator();
         a.setID(id);
 
         Transaction t = null;
         Session session = null;
 
-        try {
-           SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
+        try
+        {
+            SessionFactory sessionFac = ConexaoHibernate.getSessionFactory();
             session = sessionFac.openSession();
             t = session.beginTransaction();
-            
+
             session.delete(a);
             t.commit();
 
             return 1;
 
-        } catch (HibernateException e) {
+        } catch (HibernateException e)
+        {
             t.rollback();
             return 2;
-        } finally {
+        } finally
+        {
             session.close();
         }
 
